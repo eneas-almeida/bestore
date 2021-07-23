@@ -8,16 +8,16 @@ import br.com.venzel.store.modules.user.dtos.UserInputDTO;
 import br.com.venzel.store.modules.user.entities.User;
 
 @Component
-public class UserDisassembler {
+public class UserDesassembler {
 
     @Autowired
     private ModelMapper modelMapper;
 
-    public User toObject(UserInputDTO userInputDTO) {
+    public User toDomain(UserInputDTO userInputDTO) {
         return modelMapper.map(userInputDTO, User.class);
     }
 
-    public void toCopyObject(UserInputDTO userInputDTO, User user) {
+    public void toCopyDomain(UserInputDTO userInputDTO, User user) {
         modelMapper.map(userInputDTO, user);
     }
 }
