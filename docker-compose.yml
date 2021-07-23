@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+    mysql_container:
+        image: mysql:5.7
+        container_name: store_mysql
+        restart: always
+        ports:
+            - 3306:3306
+        volumes:
+            - ./data/mysql:/var/lib/mysql
+            #- mysql_data:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=store
+            - MYSQL_USER=store
+            - MYSQL_PASSWORD=store
+            - MYSQL_ROOT_PASSWORD=store
+        network_mode: host
+
+    mongodb_container:
+        image: mongo:latest
+        container_name: store_mongodb
+        ports:
+            - 27017:27017
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=store
+            - MONGO_INITDB_ROOT_PASSWORD=store
+        volumes:
+            - ./data/mongodb:/data/db
+            #- mongodb_data:/data/db
+            - ./scripts/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+        network_mode: host
+#volumes:
+#    mysql_data:
+#    mongodb_data:
