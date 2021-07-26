@@ -1,5 +1,6 @@
 ### User ###
 data/
+bin/
 
 ### Init ###
 HELP.md
