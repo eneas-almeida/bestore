@@ -16,11 +16,12 @@ import br.com.venzel.store.modules.user.dtos.UserInputDTO;
 public class CreateUserController {
 
     @Autowired
-    private CreateUserService createUserService;
+    private CreateUserService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO handle(@RequestBody UserInputDTO userInputDTO) {
-        return createUserService.execute(userInputDTO);
+
+        return service.execute(userInputDTO);
     }
 }
