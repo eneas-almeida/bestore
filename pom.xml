@@ -59,7 +59,7 @@
 			<version>2.4.2</version>
 		</dependency>
 
-		<dependency>u
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>

@@ -11,6 +11,7 @@ import br.com.venzel.store.modules.user.assemblers.UserDesassembler;
 import br.com.venzel.store.modules.user.dtos.UserDTO;
 import br.com.venzel.store.modules.user.dtos.UserInputDTO;
 import br.com.venzel.store.modules.user.entities.User;
+import br.com.venzel.store.modules.user.exceptions.UserNotFoundException;
 import br.com.venzel.store.modules.user.repositories.UserRepository;
 
 @Service
@@ -28,11 +29,13 @@ public class UpdateUserService {
     @Transactional
     public UserDTO execute(UserInputDTO userInputDTO, Long userId) {
         
-        Optional<User> hasUser = repository.findById(userId);
+        Optional<User> currentUser = repository.findById(userId);
 
-        if (!hasUser.isPresent()) {}
+        if (!currentUser.isPresent()) {
+            throw new UserNotFoundException("User not found!");
+        }
 
-        User user = hasUser.get();
+        User user = currentUser.get();
 
         desassembler.toCopyDomain(userInputDTO, user);
 

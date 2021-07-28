@@ -1,3 +1,8 @@
+.PHONY: build
+
+build:
+	clear && ./mvnw package
+
 .PHONY: run
 
 run:
