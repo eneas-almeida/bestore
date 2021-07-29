@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.venzel.store.modules.user.assemblers.UserAssembler;
 import br.com.venzel.store.modules.user.assemblers.UserDesassembler;
 import br.com.venzel.store.modules.user.dtos.UserDTO;
-import br.com.venzel.store.modules.user.dtos.UserInputDTO;
 import br.com.venzel.store.modules.user.entities.User;
 import br.com.venzel.store.modules.user.exceptions.UserNotFoundException;
 import br.com.venzel.store.modules.user.repositories.UserRepository;
@@ -16,28 +15,24 @@ import br.com.venzel.store.modules.user.repositories.UserRepository;
 public class UpdateUserService {
 
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
 
     @Autowired
-    private UserAssembler assembler;
+    private UserAssembler userAssembler;
 
     @Autowired
-    private UserDesassembler desassembler;
-
-    private User userOrFail(Long userId) {
-        return repository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found!"));
-    }
+    private UserDesassembler userDesassembler;
 
     @Transactional
-    public UserDTO execute(UserInputDTO userInputDTO, Long userId) {
+    public UserDTO execute(UpdateUserDTO dto, Long userId) {
         
-        User user = userOrFail(userId);
+        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found!"));
 
-        user = desassembler.toDomain(userInputDTO);
+        userDesassembler.toCopyDomain(dto, user);
 
-        user = repository.save(user);
+        userRepository.save(user);
 
-        UserDTO userModel = assembler.toModel(user);
+        UserDTO userModel = userAssembler.toModel(user);
 
         return userModel;
     }

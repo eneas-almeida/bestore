@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import br.com.venzel.store.shared.exceptions.problems.EntityAlreadyExistsException;
 import br.com.venzel.store.shared.exceptions.problems.EntityInUseException;
 import br.com.venzel.store.shared.exceptions.problems.EntityNotFoundException;
 
@@ -55,10 +56,22 @@ public class ApiExceptionHandle extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler(EntityInUseException.class)
-	public ResponseEntity<?> handleEntityNotFoundException(EntityInUseException ex, WebRequest request) {
+	public ResponseEntity<?> handleEntityInUseFoundException(EntityInUseException ex, WebRequest request) {
 		
-		HttpStatus status = HttpStatus.NOT_FOUND;
+		HttpStatus status = HttpStatus.CONFLICT;
 		ProblemType problemType = ProblemType.ENTITY_IN_USER;
+		String detail = ex.getMessage();
+		
+		Problem problem = createProblemBuilder(status, problemType, detail);
+		
+		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
+	}
+
+    @ExceptionHandler(EntityAlreadyExistsException.class)
+	public ResponseEntity<?> handleEntityAlreadyExistsException(EntityAlreadyExistsException ex, WebRequest request) {
+		
+		HttpStatus status = HttpStatus.FOUND;
+		ProblemType problemType = ProblemType.ENTITY_ALREADY_EXISTS;
 		String detail = ex.getMessage();
 		
 		Problem problem = createProblemBuilder(status, problemType, detail);

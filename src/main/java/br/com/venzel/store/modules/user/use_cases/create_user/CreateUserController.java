@@ -9,19 +9,20 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.venzel.store.modules.user.dtos.UserDTO;
-import br.com.venzel.store.modules.user.dtos.UserInputDTO;
 
 @RestController
 @RequestMapping("/users")
 public class CreateUserController {
 
     @Autowired
-    private CreateUserService service;
+    private CreateUserService createUserService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO handle(@RequestBody UserInputDTO userInputDTO) {
+    public UserDTO handle(@RequestBody CreateUserDTO dto) {
 
-        return service.execute(userInputDTO);
+        UserDTO userModel = createUserService.execute(dto);
+        
+        return userModel;
     }
 }
