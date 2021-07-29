@@ -1,7 +1,5 @@
 package br.com.venzel.store.modules.user.use_cases.update_user;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,23 +24,21 @@ public class UpdateUserService {
     @Autowired
     private UserDesassembler desassembler;
 
+    private User userOrFail(Long userId) {
+        return repository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found!"));
+    }
+
     @Transactional
     public UserDTO execute(UserInputDTO userInputDTO, Long userId) {
         
-        Optional<User> currentUser = repository.findById(userId);
+        User user = userOrFail(userId);
 
-        if (!currentUser.isPresent()) {
-            throw new UserNotFoundException("User not found!");
-        }
+        user = desassembler.toDomain(userInputDTO);
 
-        User user = currentUser.get();
+        user = repository.save(user);
 
-        desassembler.toCopyDomain(userInputDTO, user);
+        UserDTO userModel = assembler.toModel(user);
 
-        repository.save(user);
-
-        UserDTO userDTO = assembler.toModel(user);
-
-        return userDTO;
+        return userModel;
     }
 }
