@@ -19,10 +19,8 @@ public class CreateUserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO handle(@RequestBody CreateUserDTO dto) {
+    public UserDTO handle(@RequestBody UserDTO dto) {
 
-        UserDTO userModel = createUserService.execute(dto);
-        
-        return userModel;
+        return createUserService.execute(dto);
     }
 }

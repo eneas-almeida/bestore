@@ -1,16 +1,19 @@
 package br.com.venzel.store.modules.user.use_cases.create_user;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.venzel.store.modules.user.assemblers.UserAssembler;
-import br.com.venzel.store.modules.user.assemblers.UserDesassembler;
 import br.com.venzel.store.modules.user.dtos.UserDTO;
 import br.com.venzel.store.modules.user.entities.User;
+import br.com.venzel.store.modules.user.exceptions.UserAlreadyExistsException;
+import br.com.venzel.store.modules.user.mapper.UserMapper;
 import br.com.venzel.store.modules.user.providers.hash_provider.HashProvider;
 import br.com.venzel.store.modules.user.repositories.UserRepository;
+import br.com.venzel.store.modules.user.utils.UserMessageUtils;
 
 @Service
 public class CreateUserService {
@@ -19,28 +22,27 @@ public class CreateUserService {
     private UserRepository userRepository;
 
     @Autowired
-    private UserAssembler userAssembler;
-
-    @Autowired
-    private UserDesassembler userDesassembler;
+    private UserMapper userMapper;
 
     @Qualifier("mockHashProvider")
     @Autowired
     private HashProvider hashProvider;
 
     @Transactional
-    public UserDTO execute(CreateUserDTO dto) {
+    public UserDTO execute(UserDTO dto) {
+        
+        Optional<User> optionalEntity = userRepository.findOneByEmail(dto.getEmail());
 
-        User user = userDesassembler.toDomain(dto);
+        if (optionalEntity.isPresent()) {
+            throw new UserAlreadyExistsException(UserMessageUtils.USER_ALREADY_EXISTS);
+        }
 
-        String passwordGenerated = hashProvider.generateHash(dto.getPassword());
+        User user = userMapper.toEntity(dto);
 
-        user.setPassword(passwordGenerated);
+        user.setPassword(hashProvider.generateHash(dto.getPassword()));
 
-        user = userRepository.save(user);
+        userRepository.save(user);
 
-        UserDTO userModel = userAssembler.toModel(user);
-
-        return userModel;
+        return userMapper.toDTO(user);
     }
 }

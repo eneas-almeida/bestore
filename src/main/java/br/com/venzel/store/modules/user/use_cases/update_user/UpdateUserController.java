@@ -16,11 +16,9 @@ public class UpdateUserController {
     @Autowired
     private UpdateUserService updateUserService;
 
-    @PutMapping("/{userId}")
-    public UserDTO handle(@RequestBody UpdateUserDTO dto, @PathVariable Long userId) {
+    @PutMapping("/{id}")
+    public UserDTO handle(@RequestBody UserDTO dto, @PathVariable Long id) {
 
-        UserDTO userModel = updateUserService.execute(dto, userId);
-        
-        return userModel;
+        return updateUserService.execute(dto, id);
     }
 }
