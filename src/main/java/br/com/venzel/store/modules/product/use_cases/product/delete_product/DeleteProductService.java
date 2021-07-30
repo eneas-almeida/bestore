@@ -1,5 +1,7 @@
-package br.com.venzel.store.modules.product.use_cases.product.create_product;
+package br.com.venzel.store.modules.product.use_cases.product.delete_product;
 
+import java.time.Clock;
+import java.time.OffsetDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.product.dtos.ProductDTO;
 import br.com.venzel.store.modules.product.entities.Product;
-import br.com.venzel.store.modules.product.exceptions.product.ProductAlreadyExistsException;
+import br.com.venzel.store.modules.product.exceptions.product.ProductNotFoundException;
 import br.com.venzel.store.modules.product.mappers.ProductMapper;
 import br.com.venzel.store.modules.product.repositories.ProductRepository;
 import br.com.venzel.store.modules.product.utils.ProductMessageUtils;
 
 @Service
-public class CreateProductService {
-
+public class DeleteProductService {
+    
     @Autowired
     private ProductRepository productRepository;
 
@@ -23,18 +25,23 @@ public class CreateProductService {
     private ProductMapper productMapper;
 
     @Transactional
-    public ProductDTO execute(ProductDTO dto) {
-        Optional<Product> optionalEntity = productRepository.findOneByName(dto.getName());
+    public ProductDTO execute(Long id) {
+        
+        Optional<Product> optionalEntity = productRepository.findById(id);
 
-        if (optionalEntity.isPresent()) {
-            throw new ProductAlreadyExistsException(ProductMessageUtils.PRODUCT_ALREADY_EXISTS);
+        if (!optionalEntity.isPresent()) {
+            throw new ProductNotFoundException(ProductMessageUtils.PRODUCT_NOT_FOUND);
         }
 
-        Product product = productMapper.toEntity(dto);
+        Product product = optionalEntity.get();
 
-        product.active();
+        /* Update data */
 
-        productRepository.save(product);
+        product.setDeletedAt(OffsetDateTime.now(Clock.systemUTC()));
+
+        product.inactive();
+
+        /* End update data */
 
         return productMapper.toDTO(product);
     }

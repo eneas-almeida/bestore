@@ -12,4 +12,6 @@ public class ProductDTO {
     private String name;
 
     private Double price;
+
+    private Boolean activated;
 }
