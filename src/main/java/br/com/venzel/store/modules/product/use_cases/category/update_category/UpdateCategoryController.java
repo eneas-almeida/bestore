@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.venzel.store.modules.product.dtos.CategoryDTO;
 
 @RestController
-@RequestMapping("/Categorys/categories")
+@RequestMapping("/products/categories")
 public class UpdateCategoryController {
     
     @Autowired
