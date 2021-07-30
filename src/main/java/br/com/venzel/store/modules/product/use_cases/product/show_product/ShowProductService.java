@@ -1,20 +1,21 @@
-package br.com.venzel.store.modules.product.use_cases.product.update_product;
+package br.com.venzel.store.modules.product.use_cases.product.show_product;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.product.dtos.ProductDTO;
 import br.com.venzel.store.modules.product.entities.Product;
+import br.com.venzel.store.modules.product.exceptions.product.ProductNotFoundException;
 import br.com.venzel.store.modules.product.mappers.ProductMapper;
 import br.com.venzel.store.modules.product.repositories.ProductRepository;
 import br.com.venzel.store.modules.product.utils.ProductMessageUtils;
-import br.com.venzel.store.modules.user.exceptions.UserNotFoundException;
 
 @Service
-public class UpdateProductService {
+public class ShowProductService {
 
     @Autowired
     private ProductRepository productRepository;
@@ -22,24 +23,15 @@ public class UpdateProductService {
     @Autowired
     private ProductMapper productMapper;
 
-    @Transactional
-    public ProductDTO execute(ProductDTO dto, Long id) {
-
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    public ProductDTO execute(Long id) {
+        
         Optional<Product> optionalEntity = productRepository.findById(id);
 
         if (!optionalEntity.isPresent()) {
-            throw new UserNotFoundException(ProductMessageUtils.PRODUCT_NOT_FOUND);
+            throw new ProductNotFoundException(ProductMessageUtils.PRODUCT_NOT_FOUND);
         }
 
-        /*
-            Update data
-
-            FALTA FAZER!
-
-        */
-
-        Product product = productMapper.toEntity(dto);
-
-        return productMapper.toDTO(product);
-    }
+        return productMapper.toDTO(optionalEntity.get());
+    }  
 }

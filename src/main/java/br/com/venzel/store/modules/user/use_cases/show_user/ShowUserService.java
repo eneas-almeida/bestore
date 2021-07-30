@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.user.dtos.UserDTO;
@@ -15,13 +16,14 @@ import br.com.venzel.store.modules.user.utils.UserMessageUtils;
 
 @Service
 public class ShowUserService {
+
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private UserMapper userMapper;
 
-    @Transactional
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public UserDTO execute(Long id) {
         
         Optional<User> optionalEntity = userRepository.findById(id);
