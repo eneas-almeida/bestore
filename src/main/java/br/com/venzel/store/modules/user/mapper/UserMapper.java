@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.venzel.store.modules.user.dtos.UpdateUserDTO;
 import br.com.venzel.store.modules.user.dtos.UserDTO;
 import br.com.venzel.store.modules.user.entities.User;
 
@@ -30,7 +31,12 @@ public class UserMapper {
         return modelMapper.map(dto, User.class);
     }
 
-    public void toCopyEntity(UserDTO dto, User user) {
+    public void toCopyEntity(UpdateUserDTO dto, User user) {
+
+        // modelMapper.typeMap(UserDTO.class, User.class)
+        //             .addMappings(e -> e.skip(User::setId))
+        //             .addMappings(e -> e.skip(User::setPassword));
+        
         modelMapper.map(dto, user);
     }
 }

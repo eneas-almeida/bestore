@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.venzel.store.modules.user.dtos.UpdateUserDTO;
 import br.com.venzel.store.modules.user.dtos.UserDTO;
 
 @RestController
@@ -17,7 +18,7 @@ public class UpdateUserController {
     private UpdateUserService updateUserService;
 
     @PutMapping("/{id}")
-    public UserDTO handle(@RequestBody UserDTO dto, @PathVariable Long id) {
+    public UserDTO handle(@RequestBody UpdateUserDTO dto, @PathVariable Long id) {
 
         return updateUserService.execute(dto, id);
     }
