@@ -15,7 +15,7 @@ import br.com.venzel.store.modules.user.repositories.UserRepository;
 import br.com.venzel.store.modules.user.utils.UserMessageUtils;
 
 @Service
-public class ListUserServices {
+public class ListUserService {
 
     @Autowired
     private UserRepository userRepository;

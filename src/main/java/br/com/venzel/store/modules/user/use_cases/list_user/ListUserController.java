@@ -14,10 +14,10 @@ import br.com.venzel.store.modules.user.dtos.UserDTO;
 public class ListUserController {
     
     @Autowired
-    private ListUserServices listUserServices;
+    private ListUserService listUserService;
 
     @GetMapping
     public List<UserDTO> handle() {
-        return this.listUserServices.execute();
+        return this.listUserService.execute();
     }
 }
