@@ -31,7 +31,10 @@ public class Payment {
     private Long id;
 
     @Column(nullable = false, length = 50)
-    private String paymentState;
+    private String name;
+
+    @Column(nullable = false, length = 50)
+    private String state;
 
     /* Timestamp */
 

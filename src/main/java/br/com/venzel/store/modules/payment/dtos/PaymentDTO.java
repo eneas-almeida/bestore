@@ -9,5 +9,7 @@ public class PaymentDTO {
     
     private Long id;
 
-    private String paymentState;
+    private String name;
+
+    private String state;
 }

@@ -39,7 +39,7 @@ public class User {
     @Column(nullable = true, length = 10)
     private String birthday;
 
-    @Column(nullable = false, length = 12)
+    @Column(nullable = false, length = 50)
     private String password;
 
     @Column(nullable = true, length = 50)

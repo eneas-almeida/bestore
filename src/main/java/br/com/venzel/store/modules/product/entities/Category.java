@@ -1,10 +1,14 @@
 package br.com.venzel.store.modules.product.entities;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,4 +31,10 @@ public class Category {
 
     @Column(nullable = false, length = 50)
     private String name;
+
+    /* Timestamp */
+
+    @Column(nullable = false, columnDefinition = "datetime")
+    @CreationTimestamp
+    private OffsetDateTime createdAt;
 }
