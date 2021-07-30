@@ -39,6 +39,14 @@ public class CreateUserService {
 
         User user = userMapper.toEntity(dto);
 
+        /* Update data */
+
+        user.inactive();
+
+        user.disallow();
+
+        /* End update data */
+
         user.setPassword(hashProvider.generateHash(dto.getPassword()));
 
         userRepository.save(user);
