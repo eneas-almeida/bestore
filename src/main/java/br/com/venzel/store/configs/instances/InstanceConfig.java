@@ -24,18 +24,19 @@ public class InstanceConfig implements CommandLineRunner {
     @Autowired
     private PaymentInstance paymentInstance;
 
+    @Autowired
+    private OrderInstance orderInstance;
+
     @Override
     public void run(String... args) throws Exception {
 
         if (ambientConfig.getActive().equals("development")) {
 
             userInsntace.populate();
-
             productInstance.populate();
-
             categoryInstance.populate();
-
             paymentInstance.populate();
+            orderInstance.populate();
         }
     }
 }
