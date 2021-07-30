@@ -1,5 +1,13 @@
 package br.com.venzel.store.modules.payment.dtos;
 
-public class PaymentDTO {
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class PaymentDTO {
+    
+    private Long id;
+
+    private String paymentState;
 }

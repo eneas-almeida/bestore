@@ -1,5 +1,12 @@
 package br.com.venzel.store.modules.payment.exceptions;
 
-public class PaymentInUseException {
+import br.com.venzel.store.shared.exceptions.problems.EntityInUseException;
+
+public class PaymentInUseException extends EntityInUseException {
+
+    private static final long serialVersionUID = 1L;
     
+    public PaymentInUseException(String message) {
+        super(message);
+    }
 }

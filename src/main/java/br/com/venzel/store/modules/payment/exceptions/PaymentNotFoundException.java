@@ -1,4 +1,12 @@
 package br.com.venzel.store.modules.payment.exceptions;
 
-public class PaymentNotFoundException {
+import br.com.venzel.store.shared.exceptions.problems.EntityNotFoundException;
+
+public class PaymentNotFoundException extends EntityNotFoundException {
+
+    private static final long serialVersionUID = 1L;
+    
+    public PaymentNotFoundException(String message) {
+        super(message);
+    }
 }

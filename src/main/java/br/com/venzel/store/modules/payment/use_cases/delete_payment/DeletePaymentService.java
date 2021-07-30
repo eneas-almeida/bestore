@@ -1,4 +1,4 @@
-package br.com.venzel.store.modules.payment.use_cases.create_payment;
+package br.com.venzel.store.modules.payment.use_cases.delete_payment;
 
 import java.util.Optional;
 
@@ -8,13 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.payment.dtos.PaymentDTO;
 import br.com.venzel.store.modules.payment.entities.Payment;
-import br.com.venzel.store.modules.payment.exceptions.PaymentAlreadyExistsException;
+import br.com.venzel.store.modules.payment.exceptions.PaymentNotFoundException;
 import br.com.venzel.store.modules.payment.mapper.PaymentMapper;
 import br.com.venzel.store.modules.payment.repositories.PaymentRepository;
 import br.com.venzel.store.modules.payment.utils.PaymentMessageUtils;
 
 @Service
-public class CreatePaymentService {
+public class DeletePaymentService {
 
     @Autowired
     private PaymentRepository paymentRepository;
@@ -23,18 +23,16 @@ public class CreatePaymentService {
     private PaymentMapper paymentMapper;
 
     @Transactional
-    public PaymentDTO execute(PaymentDTO dto) {
+    public PaymentDTO execute(Long id) {
         
-        Optional<Payment> optionalEntity = paymentRepository.findById(dto.getId());
+        Optional<Payment> optionalEntity = paymentRepository.findById(id);
 
-        if (optionalEntity.isPresent()) {
-            throw new PaymentAlreadyExistsException(PaymentMessageUtils.PAYMENT_ALREADY_EXISTS);
+        if (!optionalEntity.isPresent()) {
+            throw new PaymentNotFoundException(PaymentMessageUtils.PAYMENT_NOT_FOUND);
         }
 
-        Payment payment = paymentMapper.toEntity(dto);
+        paymentRepository.deleteById(id);
 
-        paymentRepository.save(payment);
-
-        return paymentMapper.toDTO(payment);
+        return paymentMapper.toDTO(optionalEntity.get());
     }
 }
