@@ -30,6 +30,19 @@ public class Order {
     @EqualsAndHashCode.Include
     private Long id;
 
+    /* Activated */
+
+    @Builder.Default
+    private Boolean activated = Boolean.FALSE;
+
+    public void active() {
+        setActivated(true);
+    }
+
+    public void inactive() {
+        setActivated(false);
+    }
+
     /* Timestamp */
 
     @Column(nullable = false, columnDefinition = "datetime")

@@ -35,14 +35,6 @@ public class DeleteUserService {
 
         User user = optionalEntity.get();
 
-        /* 
-
-        userRepository.deleteById(id);
-
-        userRepository.flush();
-        
-        */
-
         /* Update data */
 
         user.setDeletedAt(OffsetDateTime.now(Clock.systemUTC()));

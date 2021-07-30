@@ -38,6 +38,8 @@ public class OrderInstance {
 
     public Order entityBuilder() {
 
-        return Order.builder().build();
+        return Order.builder()
+                    .activated(true)
+                    .build();
     }
 }

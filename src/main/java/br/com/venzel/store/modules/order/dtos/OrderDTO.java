@@ -1,5 +1,7 @@
 package br.com.venzel.store.modules.order.dtos;
 
+import java.time.OffsetDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,4 +10,6 @@ import lombok.Setter;
 public class OrderDTO {
 
     private Long id;
+
+    private OffsetDateTime createdAt;
 }
