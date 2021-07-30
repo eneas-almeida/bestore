@@ -20,8 +20,8 @@ public class UserMapper {
         return modelMapper.map(user, UserDTO.class);
     }
 
-    public List<UserDTO> toCollectionModel(List<User> list) {
-        return list.stream()
+    public List<UserDTO> toCollectionModel(List<User> users) {
+        return users.stream()
                     .map(e -> toDTO(e))
                     .collect(Collectors.toList());
     }

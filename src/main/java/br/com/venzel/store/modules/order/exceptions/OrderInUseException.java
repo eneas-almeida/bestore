@@ -1,5 +1,12 @@
 package br.com.venzel.store.modules.order.exceptions;
 
-public class OrderInUseException {
+import br.com.venzel.store.shared.exceptions.problems.EntityInUseException;
+
+public class OrderInUseException extends EntityInUseException {
+
+    private static final long serialVersionUID = 1L;
     
+    public OrderInUseException(String message) {
+        super(message);
+    }
 }
