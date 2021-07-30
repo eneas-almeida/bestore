@@ -1,5 +1,7 @@
 package br.com.venzel.store.modules.product.use_cases.category.update_category;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,6 +10,8 @@ import br.com.venzel.store.modules.product.dtos.CategoryDTO;
 import br.com.venzel.store.modules.product.entities.Category;
 import br.com.venzel.store.modules.product.mappers.CategoryMapper;
 import br.com.venzel.store.modules.product.repositories.CategoryRepository;
+import br.com.venzel.store.modules.product.utils.CategoryMessageUtils;
+import br.com.venzel.store.modules.user.exceptions.UserNotFoundException;
 
 @Service
 public class UpdateCategoryService {
@@ -21,9 +25,20 @@ public class UpdateCategoryService {
     @Transactional
     public CategoryDTO execute(CategoryDTO dto, Long id) {
 
-        Category category = categoryMapper.toEntity(dto);
+        Optional<Category> optionalEntity = categoryRepository.findById(id);
 
-        categoryRepository.save(category);
+        if (!optionalEntity.isPresent()) {
+            throw new UserNotFoundException(CategoryMessageUtils.CATEGORY_NOT_FOUND);
+        }
+        
+        /*
+            Update data
+
+            FALTA FAZER!
+
+        */
+
+        Category category = categoryMapper.toEntity(dto);
 
         return categoryMapper.toDTO(category);
     } 
