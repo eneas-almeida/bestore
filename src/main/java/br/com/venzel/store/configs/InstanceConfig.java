@@ -22,9 +22,23 @@ public class InstanceConfig implements CommandLineRunner {
         
         userRepository.deleteAll();
 
-        User tiago = new User(null, "Tiago", "tiago@gmail.com", "queijo");
-        User alex = new User(null, "Alex", "alex@gmail.com", "queijo");
-        User liz = new User(null, "Liz", "liz@gmail.com", "queijo");
+        User tiago = User.builder()
+                        .name("tiago")
+                        .email("tiago@gmail.com")
+                        .password("ovopreto")
+                        .build();
+        
+        User alex = User.builder()
+                        .name("alex")
+                        .email("alex@gmail.com")
+                        .password("ovobranco")
+                        .build();
+
+        User liz = User.builder()
+                        .name("liz")
+                        .email("liz@gmail.com")
+                        .password("ovoverde")
+                        .build();
 
         List<User> users = new ArrayList<>();
 
