@@ -6,8 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import br.com.venzel.store.modules.order.dtos.OrderDTO;
 import br.com.venzel.store.modules.user.dtos.address.AddressDTO;
 import br.com.venzel.store.modules.user.entities.types.UserType;
 import lombok.Getter;
@@ -16,6 +18,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserDTO {
+
+     /* Attributes */
 	
     private Long id;
 
@@ -33,16 +37,21 @@ public class UserDTO {
 
     private Boolean allowed;
 
-    /* Cardinality */
-
-    @JsonManagedReference
-    private List<AddressDTO> adresses = new ArrayList<>();
-
-    private Set<String> telephones = new HashSet<>();
-
-    /* Timestamp */
+    /* Timestamps */
 
     private OffsetDateTime createdAt;
 
     private OffsetDateTime updatedAt;
+
+     /* Elements collections */
+
+    private Set<String> telephones = new HashSet<>();
+
+    /* Cardinalities */
+
+    @JsonIgnore
+    private List<OrderDTO> orders = new ArrayList<>();
+
+    @JsonManagedReference
+    private List<AddressDTO> adresses = new ArrayList<>();
 }

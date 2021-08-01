@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import br.com.venzel.store.modules.order.entities.Order;
 import br.com.venzel.store.modules.user.entities.types.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,7 +39,7 @@ public class User {
     @EqualsAndHashCode.Include
     private Long id;
 
-    /* Columns */
+    /* Attributes */
 
     @Column(nullable = false)
     private Integer type = 1;
@@ -58,7 +59,7 @@ public class User {
     @Column(nullable = true, length = 50)
     private String avatar;
 
-    /* Activated column */
+    /* Activated attribute */
 
     @Column(nullable = false)
     private Boolean activated = Boolean.FALSE;
@@ -71,7 +72,7 @@ public class User {
         setActivated(false);
     }
 
-    /* Allowed column */
+    /* Allowed attribute */
 
     @Column(nullable = false)
     private Boolean allowed = Boolean.TRUE;
@@ -83,15 +84,6 @@ public class User {
     public void disallow() {
         setAllowed(false);
     }
-
-    /* Cardinalities */
-
-    @OneToMany(mappedBy = "user")
-    private List<Address> adresses = new ArrayList<>();
-
-    @ElementCollection
-    @CollectionTable(name = "telephone")
-    private Set<String> telephones = new HashSet<>();
 
     /* Timestamps */
 
@@ -134,4 +126,18 @@ public class User {
     public void setType(UserType type) {
         this.type = type.getCode();
     }
+
+    /* Elements collections */
+
+    @ElementCollection
+    @CollectionTable(name = "telephone")
+    private Set<String> telephones = new HashSet<>();
+
+    /* Cardinalities */
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Address> adresses = new ArrayList<>();
 }

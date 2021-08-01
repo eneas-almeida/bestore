@@ -4,13 +4,17 @@ import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import br.com.venzel.store.modules.order.entities.Order;
 import br.com.venzel.store.modules.payment.entities.types.PaymentState;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,12 +26,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "payment")
-public class Payment {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Payment {
 
     /* Id & strategy to generate */
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
 
@@ -36,7 +40,7 @@ public class Payment {
     @Column(nullable = false)
     private Integer state = 1;
 
-    @Column(nullable = false, length = 12)
+    @Column(nullable = true, length = 12)
     private Double purchaseAmount;
 
     /* Timestamps */
@@ -56,10 +60,10 @@ public class Payment {
 
     /* Constructors */
 
-    public Payment(PaymentState State, Double purchaseAmount) {
+    public Payment(PaymentState state, Order order) {
         super();
-        this.state = State.getCode();
-        this.purchaseAmount = purchaseAmount;
+		this.state = (state == null) ? null : state.getCode();
+		this.order = order;
     }
 
     /* Getters & Setters */
@@ -71,4 +75,11 @@ public class Payment {
     public void setState(PaymentState state) {
         this.state = state.getCode();
     }
+
+    /* Cardinalities */
+
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    @MapsId
+    private Order order;
 }
