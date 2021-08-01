@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import br.com.venzel.store.modules.order.entities.Order;
 import br.com.venzel.store.modules.order.repositories.OrderRepository;
 import br.com.venzel.store.modules.payment.entities.Payment;
+import br.com.venzel.store.modules.payment.entities.types.PaymentState;
 import br.com.venzel.store.modules.payment.repositories.PaymentRepository;
 import br.com.venzel.store.modules.product.entities.Category;
 import br.com.venzel.store.modules.product.entities.Product;
@@ -78,9 +79,9 @@ public class DataInstanceConfig implements CommandLineRunner {
         Order od2 = new Order();
         Order od3 = new Order();
 
-        Payment pm1 = new Payment("SEPARACAO");
-        Payment pm2 = new Payment("SEPARACAO");
-        Payment pm3 = new Payment("SEPARACAO");
+        Payment pm1 = new Payment(PaymentState.PAYMENT_VERIFICATION);
+        Payment pm2 = new Payment(PaymentState.PAYMENT_VERIFICATION);
+        Payment pm3 = new Payment(PaymentState.PAYMENT_VERIFICATION);
 
         State st1 = new State("SP");
         State st2 = new State("RJ");

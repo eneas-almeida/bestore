@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import br.com.venzel.store.modules.payment.entities.types.PaymentState;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,13 +24,17 @@ import lombok.NoArgsConstructor;
 @Entity(name = "payment")
 public class Payment {
 
+    /* Id & strategy to generate */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
 
-    @Column(nullable = false, length = 50)
-    private String state;
+    /* Columns */
+
+    @Column(nullable = false)
+    private Integer state = 1;
 
     /* Timestamp */
 
@@ -41,13 +46,24 @@ public class Payment {
     @UpdateTimestamp
     private OffsetDateTime updatedAt;
 
+    /* Date for data hiding */
+
     @Column(nullable = true, columnDefinition = "datetime")
     private OffsetDateTime deletedAt;
 
-    /* Constructor */
+    /* Constructors */
 
-    public Payment(String state) {
-        this.state = state;
+    public Payment(PaymentState State) {
+        this.state = State.getCode();
     }
 
+    /* Getters & Setters */
+
+    public PaymentState getState() {
+        return PaymentState.toEnum(state);
+    }
+
+    public void setState(PaymentState state) {
+        this.state = state.getCode();
+    }
 }
