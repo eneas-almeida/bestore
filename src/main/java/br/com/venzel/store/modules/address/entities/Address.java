@@ -31,6 +31,8 @@ public class Address {
     @EqualsAndHashCode.Include
     private Long id;
 
+    /* Columns */
+
     @Column(nullable = false, length = 200)
     private String publicPlace;
 

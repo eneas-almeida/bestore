@@ -97,12 +97,14 @@ public class DataInstanceConfig implements CommandLineRunner {
         Address ad2 = new Address("Rua Pedro II", "34", null, null, "58429077", us2, ct2);
         Address ad3 = new Address("Rua Afonso Campos", "90", null, null, "58429077", us3, ct3);
         Address ad4 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us3, ct4);
+        Address ad5 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us1, ct4);
 
         /* */
 
         us1.getAdresses().addAll(Arrays.asList(ad1, ad2));
         us2.getAdresses().addAll(Arrays.asList(ad3));
         us3.getAdresses().addAll(Arrays.asList(ad4));
+        us3.getAdresses().addAll(Arrays.asList(ad5));
 
         /* */
 
@@ -137,6 +139,6 @@ public class DataInstanceConfig implements CommandLineRunner {
         paymentRepository.saveAll(Arrays.asList(pm1, pm2, pm3));
         stateRepository.saveAll(Arrays.asList(st1, st2, st3, st4));
         cityRepository.saveAll(Arrays.asList(ct1, ct2, ct3, ct4, ct5));
-        addressRepository.saveAll(Arrays.asList(ad1, ad2, ad3, ad4));
+        addressRepository.saveAll(Arrays.asList(ad1, ad2, ad3, ad4, ad5));
     }
 }

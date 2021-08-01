@@ -35,8 +35,8 @@ public class State {
     
      /* Cardinality */
 
-     @OneToMany(mappedBy = "state")
-     private List<City> cities = new ArrayList<>();
+    @OneToMany(mappedBy = "state")
+    private List<City> cities = new ArrayList<>();
 
     /* Timestamp */
 

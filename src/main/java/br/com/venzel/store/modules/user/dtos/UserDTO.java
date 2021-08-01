@@ -2,7 +2,9 @@ package br.com.venzel.store.modules.user.dtos;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -35,6 +37,8 @@ public class UserDTO {
 
     @JsonManagedReference
     private List<AddressDTO> adresses = new ArrayList<>();
+
+    private Set<String> telephones = new HashSet<>();
 
     /* Timestamp */
 

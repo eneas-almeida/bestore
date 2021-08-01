@@ -1,7 +1,10 @@
 package br.com.venzel.store.modules.address.dtos.address;
 
+import java.time.OffsetDateTime;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import br.com.venzel.store.modules.address.dtos.city.CityDTO;
 import br.com.venzel.store.modules.user.dtos.UserDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class AddressDTO {
 
-    private Long id;
+    // private Long id;
 
     private String publicPlace;
 
@@ -27,9 +30,11 @@ public class AddressDTO {
     @JsonBackReference
     private UserDTO user;
 
+    private CityDTO city;
+
     /* Timestamp */
 
-    // private OffsetDateTime createdAt;
+    private OffsetDateTime createdAt;
 
-    // private OffsetDateTime updatedAt;
+    private OffsetDateTime updatedAt;
 }
