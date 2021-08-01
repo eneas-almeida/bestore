@@ -7,9 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum PaymentState {
     
-    PAYMENT_VERIFICATION(1, "Payment verification"),
-    SEPARATE_PRODUCTS(2, "Separate products"),
-    SEND_PRODUCTS(3, "Send products");
+    PENDING(1, "Peding"),
+    SETTLED(2, "Settled"),
+    CANCELED(3, "Canceled");
 
     private Integer code;
     private String description;
