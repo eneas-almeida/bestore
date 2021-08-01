@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.venzel.store.modules.payment.dtos.PaymentDTO;
+import br.com.venzel.store.modules.payment.dtos.UpdatePaymentDTO;
 
 @RestController
 @RequestMapping("/payments")
@@ -17,7 +18,7 @@ public class UpdatePaymentController {
     private UpdatePaymentService updatePaymentService;
 
     @PutMapping("/{id}")
-    public PaymentDTO handle(@RequestBody PaymentDTO dto, @PathVariable Long id) {
+    public PaymentDTO handle(@RequestBody UpdatePaymentDTO dto, @PathVariable Long id) {
 
         return updatePaymentService.execute(dto, id);
     }

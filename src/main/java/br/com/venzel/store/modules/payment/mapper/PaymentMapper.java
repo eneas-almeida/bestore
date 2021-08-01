@@ -7,7 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.venzel.store.modules.payment.dtos.CreatePaymentDTO;
 import br.com.venzel.store.modules.payment.dtos.PaymentDTO;
+import br.com.venzel.store.modules.payment.dtos.UpdatePaymentDTO;
 import br.com.venzel.store.modules.payment.entities.Payment;
 
 @Component
@@ -26,11 +28,11 @@ public class PaymentMapper {
                     .collect(Collectors.toList());
     }
 
-    public Payment toEntity(PaymentDTO dto) {
+    public Payment toEntity(CreatePaymentDTO dto) {
         return modelMapper.map(dto, Payment.class);
     }
 
-    public void toCopyEntity(PaymentDTO dto, Payment payment) {
+    public void toCopyEntity(UpdatePaymentDTO dto, Payment payment) {
         modelMapper.map(dto, payment);
     }
 }

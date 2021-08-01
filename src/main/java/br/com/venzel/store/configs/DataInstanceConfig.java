@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 import br.com.venzel.store.modules.order.entities.Order;
 import br.com.venzel.store.modules.order.repositories.OrderRepository;
+import br.com.venzel.store.modules.payment.entities.Payment;
+import br.com.venzel.store.modules.payment.repositories.PaymentRepository;
 import br.com.venzel.store.modules.product.entities.Category;
 import br.com.venzel.store.modules.product.entities.Product;
 import br.com.venzel.store.modules.product.repositories.CategoryRepository;
@@ -30,6 +32,9 @@ public class DataInstanceConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private PaymentRepository paymentRepository;
+
     @Override
     public void run(String... args) throws Exception {
         
@@ -37,6 +42,7 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         Category c1 = new Category("cereais");
         Category c2 = new Category("padaria");
+        Category c3 = new Category("mercearia");
 
         Product p1 = new Product("feijao", 10.21);
         Product p2 = new Product("arroz", 7.44);
@@ -49,6 +55,10 @@ public class DataInstanceConfig implements CommandLineRunner {
         Order o1 = new Order();
         Order o2 = new Order();
         Order o3 = new Order();
+
+        Payment py1 = new Payment("SEPARATE");
+        Payment py2 = new Payment("SEPARATE");
+        Payment py3 = new Payment("SEPARATE");
 
         /* */
 
@@ -63,9 +73,10 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* */
 
-        categoryRepository.saveAll(Arrays.asList(c1, c2));
+        categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
         productRepository.saveAll(Arrays.asList(p1, p2, p3));
         userRepository.saveAll(Arrays.asList(u1, u2, u3));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+        paymentRepository.saveAll(Arrays.asList(py1, py2, py3));
     }
 }

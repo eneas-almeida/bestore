@@ -12,5 +12,5 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
 
     Optional<Payment> findOneById(Long id);
 
-    Integer countById(String name);
+    Integer countById(Long id);
 }

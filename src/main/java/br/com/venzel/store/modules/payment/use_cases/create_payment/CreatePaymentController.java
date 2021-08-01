@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.venzel.store.modules.payment.dtos.CreatePaymentDTO;
 import br.com.venzel.store.modules.payment.dtos.PaymentDTO;
 
 @RestController
@@ -19,7 +20,7 @@ public class CreatePaymentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PaymentDTO handle(@RequestBody PaymentDTO dto) {
+    public PaymentDTO handle(@RequestBody CreatePaymentDTO dto) {
 
         return createPaymentService.execute(dto);
     }

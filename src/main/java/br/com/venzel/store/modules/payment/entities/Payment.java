@@ -12,14 +12,12 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "payment")
@@ -29,9 +27,6 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
-
-    @Column(nullable = false, length = 50)
-    private String name;
 
     @Column(nullable = false, length = 50)
     private String state;
@@ -48,4 +43,11 @@ public class Payment {
 
     @Column(nullable = true, columnDefinition = "datetime")
     private OffsetDateTime deletedAt;
+
+    /* Constructor */
+
+    public Payment(String state) {
+        this.state = state;
+    }
+
 }
