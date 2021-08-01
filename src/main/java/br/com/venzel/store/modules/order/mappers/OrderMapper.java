@@ -1,4 +1,4 @@
-package br.com.venzel.store.modules.order.mapper;
+package br.com.venzel.store.modules.order.mappers;
 
 import java.util.List;
 import java.util.stream.Collectors;
