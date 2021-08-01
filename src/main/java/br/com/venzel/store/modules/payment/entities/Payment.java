@@ -31,10 +31,13 @@ public class Payment {
     @EqualsAndHashCode.Include
     private Long id;
 
-    /* Columns */
+    /* Attributes */
 
     @Column(nullable = false)
     private Integer state = 1;
+
+    @Column(nullable = false, length = 12)
+    private Double purchaseAmount;
 
     /* Timestamps */
 
@@ -53,9 +56,10 @@ public class Payment {
 
     /* Constructors */
 
-    public Payment(PaymentState State) {
+    public Payment(PaymentState State, Double purchaseAmount) {
         super();
         this.state = State.getCode();
+        this.purchaseAmount = purchaseAmount;
     }
 
     /* Getters & Setters */

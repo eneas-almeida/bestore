@@ -79,9 +79,9 @@ public class DataInstanceConfig implements CommandLineRunner {
         Order od2 = new Order();
         Order od3 = new Order();
 
-        Payment pm1 = new Payment(PaymentState.PENDING);
-        Payment pm2 = new Payment(PaymentState.PENDING);
-        Payment pm3 = new Payment(PaymentState.PENDING);
+        Payment pm1 = new Payment(PaymentState.PENDING, 200.21);
+        Payment pm2 = new Payment(PaymentState.PENDING, 312.56);
+        Payment pm3 = new Payment(PaymentState.PENDING, 341.28);
 
         State st1 = new State("SP");
         State st2 = new State("RJ");
