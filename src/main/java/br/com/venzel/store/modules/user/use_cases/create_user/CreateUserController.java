@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.venzel.store.modules.user.dtos.CreateUserDTO;
 import br.com.venzel.store.modules.user.dtos.UserDTO;
 
 @RestController
@@ -19,7 +20,7 @@ public class CreateUserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO handle(@RequestBody UserDTO dto) {
+    public UserDTO handle(@RequestBody CreateUserDTO dto) {
 
         return createUserService.execute(dto);
     }

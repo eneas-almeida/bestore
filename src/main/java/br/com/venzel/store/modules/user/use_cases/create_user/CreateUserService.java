@@ -1,12 +1,11 @@
 package br.com.venzel.store.modules.user.use_cases.create_user;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.venzel.store.modules.user.dtos.CreateUserDTO;
 import br.com.venzel.store.modules.user.dtos.UserDTO;
 import br.com.venzel.store.modules.user.entities.User;
 import br.com.venzel.store.modules.user.exceptions.UserAlreadyExistsException;
@@ -29,23 +28,15 @@ public class CreateUserService {
     private HashProvider hashProvider;
 
     @Transactional
-    public UserDTO execute(UserDTO dto) {
+    public UserDTO execute(CreateUserDTO dto) {
         
-        Optional<User> optionalEntity = userRepository.findOneByEmail(dto.getEmail());
+        Boolean userAlreadyExistsWithEmail = userRepository.existsByEmail(dto.getEmail());
 
-        if (optionalEntity.isPresent()) {
+        if (userAlreadyExistsWithEmail) {
             throw new UserAlreadyExistsException(UserMessageUtils.USER_ALREADY_EXISTS);
         }
 
         User user = userMapper.toEntity(dto);
-
-        /* Update data */
-
-        user.inactive();
-
-        user.disallow();
-
-        /* End update data */
 
         user.setPassword(hashProvider.generateHash(dto.getPassword()));
 

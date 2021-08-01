@@ -41,6 +41,7 @@ public class Product {
 
     /* Activated */
 
+    @Column(nullable = true)
     private Boolean activated = Boolean.TRUE;
 
     public void active() {

@@ -34,11 +34,7 @@ public class UpdateUserService {
 
         User user = optionalEntity.get();
 
-        /* Update data */
-
         userMapper.toCopyEntity(dto, user);
-
-        /* End update data */
 
         return userMapper.toDTO(user);
     }

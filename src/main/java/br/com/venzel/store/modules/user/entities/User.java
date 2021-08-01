@@ -12,14 +12,12 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "user")
@@ -47,7 +45,7 @@ public class User {
 
     /* Activated */
 
-    @Builder.Default
+    @Column(nullable = true)
     private Boolean activated = Boolean.FALSE;
 
     public void active() {
@@ -60,7 +58,7 @@ public class User {
 
     /* Allowed */
 
-    @Builder.Default
+    @Column(nullable = true)
     private Boolean allowed = Boolean.TRUE;
 
     public void allow() {
@@ -83,4 +81,12 @@ public class User {
 
     @Column(nullable = true, columnDefinition = "datetime")
     private OffsetDateTime deletedAt;
+
+    /* Constructor */
+
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
 }
