@@ -18,7 +18,6 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import br.com.venzel.store.modules.address.entities.Address;
 import br.com.venzel.store.modules.user.entities.types.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;

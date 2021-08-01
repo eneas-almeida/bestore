@@ -12,7 +12,7 @@ import br.com.venzel.store.modules.product.entities.Product;
 import br.com.venzel.store.modules.product.mappers.ProductMapper;
 import br.com.venzel.store.modules.product.repositories.ProductRepository;
 import br.com.venzel.store.modules.product.utils.ProductMessageUtils;
-import br.com.venzel.store.modules.user.exceptions.UserNotFoundException;
+import br.com.venzel.store.modules.user.exceptions.user.UserNotFoundException;
 
 @Service
 public class UpdateProductService {

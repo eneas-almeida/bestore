@@ -7,12 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import br.com.venzel.store.modules.address.entities.Address;
-import br.com.venzel.store.modules.address.entities.City;
-import br.com.venzel.store.modules.address.entities.State;
-import br.com.venzel.store.modules.address.repositories.AddressRepository;
-import br.com.venzel.store.modules.address.repositories.CityRepository;
-import br.com.venzel.store.modules.address.repositories.StateRepository;
 import br.com.venzel.store.modules.order.entities.Order;
 import br.com.venzel.store.modules.order.repositories.OrderRepository;
 import br.com.venzel.store.modules.payment.entities.Payment;
@@ -21,9 +15,15 @@ import br.com.venzel.store.modules.product.entities.Category;
 import br.com.venzel.store.modules.product.entities.Product;
 import br.com.venzel.store.modules.product.repositories.CategoryRepository;
 import br.com.venzel.store.modules.product.repositories.ProductRepository;
+import br.com.venzel.store.modules.user.entities.Address;
+import br.com.venzel.store.modules.user.entities.City;
+import br.com.venzel.store.modules.user.entities.State;
 import br.com.venzel.store.modules.user.entities.User;
 import br.com.venzel.store.modules.user.entities.types.UserType;
 import br.com.venzel.store.modules.user.providers.hash_provider.HashProvider;
+import br.com.venzel.store.modules.user.repositories.AddressRepository;
+import br.com.venzel.store.modules.user.repositories.CityRepository;
+import br.com.venzel.store.modules.user.repositories.StateRepository;
 import br.com.venzel.store.modules.user.repositories.UserRepository;
 
 @Configuration

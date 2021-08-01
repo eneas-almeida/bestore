@@ -12,7 +12,7 @@ import br.com.venzel.store.modules.product.entities.Category;
 import br.com.venzel.store.modules.product.mappers.CategoryMapper;
 import br.com.venzel.store.modules.product.repositories.CategoryRepository;
 import br.com.venzel.store.modules.product.utils.CategoryMessageUtils;
-import br.com.venzel.store.modules.user.exceptions.UserNotFoundException;
+import br.com.venzel.store.modules.user.exceptions.user.UserNotFoundException;
 
 @Service
 public class UpdateCategoryService {
