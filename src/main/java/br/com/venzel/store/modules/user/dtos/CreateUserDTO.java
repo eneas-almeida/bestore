@@ -6,6 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateUserDTO {
+
+    private Integer type = 1;
 	
     private String name;
 

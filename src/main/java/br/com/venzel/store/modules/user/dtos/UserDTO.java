@@ -12,7 +12,7 @@ public class UserDTO {
 	
     private Long id;
 
-    private UserType userType;
+    private UserType type;
 
     private String name;
 

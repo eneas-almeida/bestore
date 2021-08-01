@@ -37,11 +37,8 @@ public class User {
     @EqualsAndHashCode.Include
     private Long id;
 
-    /* Type enum */
-
-    private UserType userType = UserType.LEGAL_PERSON;
-
-    /* Columns */
+    @Column(nullable = false)
+    private Integer type = 1;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -106,6 +103,16 @@ public class User {
     @Column(nullable = true, columnDefinition = "datetime")
     private OffsetDateTime deletedAt;
 
+    /* Getters & Setters */
+
+    public UserType getType() {
+        return UserType.toEnum(type);
+    }
+
+    public void setType(UserType type) {
+        this.type = type.getCode();
+    }
+
     /* Constructor */
 
     public User(String name, String email, String password) {
@@ -115,11 +122,11 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String password, UserType userType) {
+    public User(String name, String email, String password, UserType type) {
         super();
         this.name = name;
         this.email = email;
         this.password = password;
-        this.userType = userType;
+        this.type = type.getCode();
     }
 }
