@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import br.com.venzel.store.modules.user.entities.types.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,6 +29,12 @@ public class User {
     @EqualsAndHashCode.Include
     private Long id;
 
+    /* Type enum */
+
+    private UserType userType = UserType.LEGAL_PERSON;
+
+    /* Columns */
+
     @Column(nullable = false, length = 50)
     private String name;
 
@@ -35,7 +42,7 @@ public class User {
     private String email;
 
     @Column(nullable = true, length = 10)
-    private String birthday;
+    private String document;
 
     @Column(nullable = false, length = 50)
     private String password;
