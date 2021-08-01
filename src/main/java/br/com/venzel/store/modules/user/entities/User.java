@@ -1,16 +1,24 @@
 package br.com.venzel.store.modules.user.entities;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import br.com.venzel.store.modules.address.entities.Address;
 import br.com.venzel.store.modules.user.entities.types.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -76,6 +84,15 @@ public class User {
         setAllowed(false);
     }
 
+    /* Cardinality */
+
+    @OneToMany(mappedBy = "user")
+    private List<Address> adresses = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "telephone")
+    private Set<String> telephones = new HashSet<>();
+
     /* Timestamp */
 
     @Column(nullable = false, columnDefinition = "datetime")
@@ -92,8 +109,17 @@ public class User {
     /* Constructor */
 
     public User(String name, String email, String password) {
+        super();
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public User(String name, String email, String password, UserType userType) {
+        super();
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.userType = userType;
     }
 }

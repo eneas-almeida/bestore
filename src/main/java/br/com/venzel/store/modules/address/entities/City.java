@@ -32,6 +32,8 @@ public class City {
     @Column(nullable = false, length = 50)
     private String name;
 
+    /* Cardinality */
+
     @ManyToOne
     @JoinColumn(name = "state_id")
     private State state;

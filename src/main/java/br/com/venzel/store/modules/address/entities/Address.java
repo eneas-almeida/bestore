@@ -1,8 +1,6 @@
-package br.com.venzel.store.modules.product.entities;
+package br.com.venzel.store.modules.address.entities;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,12 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import br.com.venzel.store.modules.user.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,41 +23,39 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "product")
-public class Product {
-    
+@Entity(name = "address")
+public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
 
-    @Column(nullable = false, length = 50)
-    private String name;
+    @Column(nullable = false, length = 200)
+    private String publicPlace;
 
     @Column(nullable = false, length = 10)
-    private Double price;
+    private String number;
 
-    /* Activated */
+    @Column(nullable = true, length = 100)
+    private String complement;
 
-    @Column(nullable = true)
-    private Boolean activated = Boolean.TRUE;
+    @Column(nullable = true, length = 100)
+    private String district;
 
-    public void active() {
-        setActivated(true);
-    }
-
-    public void inactive() {
-        setActivated(false);
-    }
+    @Column(nullable = false, length = 10)
+    private String zipCode;
 
     /* Cardinality */
 
-     @ManyToMany
-     @JoinTable(name = "product_category",
-                    joinColumns = @JoinColumn(name = "product_id"),
-                    inverseJoinColumns = @JoinColumn(name = "category_id"))
-     private List<Category> categories = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+    
     /* Timestamp */
 
     @Column(nullable = false, columnDefinition = "datetime")
@@ -72,12 +68,17 @@ public class Product {
 
     @Column(nullable = true, columnDefinition = "datetime")
     private OffsetDateTime deletedAt;
-
+    
     /* Constructor */
-
-    public Product(String name, Double price) {
+    
+    public Address(String publicPlace, String number, String complement, String district, String zipCode, User user, City city) {
         super();
-        this.name = name;
-        this.price = price;
+        this.publicPlace = publicPlace;
+        this.number = number;
+        this.complement = complement;
+        this.district = district;
+        this.zipCode = zipCode;
+        this.user = user;
+        this.city = city;
     }
 }
