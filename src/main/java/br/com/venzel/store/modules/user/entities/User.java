@@ -31,10 +31,14 @@ import lombok.NoArgsConstructor;
 @Entity(name = "user")
 public class User {
 
+    /* Id & strategy to generate */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
+
+    /* Columns */
 
     @Column(nullable = false)
     private Integer type = 1;
@@ -54,7 +58,7 @@ public class User {
     @Column(nullable = true, length = 50)
     private String avatar;
 
-    /* Activated */
+    /* Activated column */
 
     @Column(nullable = false)
     private Boolean activated = Boolean.FALSE;
@@ -67,7 +71,7 @@ public class User {
         setActivated(false);
     }
 
-    /* Allowed */
+    /* Allowed column */
 
     @Column(nullable = false)
     private Boolean allowed = Boolean.TRUE;
@@ -80,7 +84,7 @@ public class User {
         setAllowed(false);
     }
 
-    /* Cardinality */
+    /* Cardinalities */
 
     @OneToMany(mappedBy = "user")
     private List<Address> adresses = new ArrayList<>();
@@ -89,7 +93,7 @@ public class User {
     @CollectionTable(name = "telephone")
     private Set<String> telephones = new HashSet<>();
 
-    /* Timestamp */
+    /* Timestamps */
 
     @Column(nullable = false, columnDefinition = "datetime")
     @CreationTimestamp
@@ -99,20 +103,12 @@ public class User {
     @UpdateTimestamp
     private OffsetDateTime updatedAt;
 
+    /* Date for data hiding */
+
     @Column(nullable = true, columnDefinition = "datetime")
     private OffsetDateTime deletedAt;
 
-    /* Getters & Setters */
-
-    public UserType getType() {
-        return UserType.toEnum(type);
-    }
-
-    public void setType(UserType type) {
-        this.type = type.getCode();
-    }
-
-    /* Constructor */
+    /* Constructors */
 
     public User(String name, String email, String password) {
         super();
@@ -126,6 +122,16 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.type = type.getCode();
+    }
+
+    /* Getters & Setters */
+
+    public UserType getType() {
+        return UserType.toEnum(type);
+    }
+
+    public void setType(UserType type) {
         this.type = type.getCode();
     }
 }
