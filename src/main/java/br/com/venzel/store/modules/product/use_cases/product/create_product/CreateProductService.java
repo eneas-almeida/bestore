@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.venzel.store.modules.product.dtos.CreateProductDTO;
-import br.com.venzel.store.modules.product.dtos.ProductDTO;
+import br.com.venzel.store.modules.product.dtos.category.CreateProductDTO;
+import br.com.venzel.store.modules.product.dtos.product.ProductDTO;
 import br.com.venzel.store.modules.product.entities.Product;
 import br.com.venzel.store.modules.product.exceptions.product.ProductAlreadyExistsException;
 import br.com.venzel.store.modules.product.mappers.ProductMapper;

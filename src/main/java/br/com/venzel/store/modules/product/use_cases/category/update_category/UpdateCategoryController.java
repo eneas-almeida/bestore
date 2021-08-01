@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.venzel.store.modules.product.dtos.CategoryDTO;
-import br.com.venzel.store.modules.product.dtos.UpdateCategoryDTO;
+import br.com.venzel.store.modules.product.dtos.category.CategoryDTO;
+import br.com.venzel.store.modules.product.dtos.product.UpdateCategoryDTO;
 
 @RestController
 @RequestMapping("/products/categories")

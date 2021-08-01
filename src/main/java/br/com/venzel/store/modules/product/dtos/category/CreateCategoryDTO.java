@@ -1,4 +1,4 @@
-package br.com.venzel.store.modules.product.dtos;
+package br.com.venzel.store.modules.product.dtos.category;
 
 import lombok.Getter;
 import lombok.Setter;

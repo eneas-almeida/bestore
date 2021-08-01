@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.venzel.store.modules.product.dtos.CreateProductDTO;
-import br.com.venzel.store.modules.product.dtos.ProductDTO;
+import br.com.venzel.store.modules.product.dtos.category.CreateProductDTO;
+import br.com.venzel.store.modules.product.dtos.product.ProductDTO;
 
 @RestController
 @RequestMapping("/products")

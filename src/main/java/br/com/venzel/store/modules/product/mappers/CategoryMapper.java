@@ -7,9 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.venzel.store.modules.product.dtos.CategoryDTO;
-import br.com.venzel.store.modules.product.dtos.CreateCategoryDTO;
-import br.com.venzel.store.modules.product.dtos.UpdateCategoryDTO;
+import br.com.venzel.store.modules.product.dtos.category.CategoryDTO;
+import br.com.venzel.store.modules.product.dtos.category.CreateCategoryDTO;
+import br.com.venzel.store.modules.product.dtos.product.UpdateCategoryDTO;
 import br.com.venzel.store.modules.product.entities.Category;
 
 @Component

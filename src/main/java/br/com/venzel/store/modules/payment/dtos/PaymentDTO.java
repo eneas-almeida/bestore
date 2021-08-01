@@ -13,6 +13,10 @@ public class PaymentDTO {
 
     private String state;
 
+    /* Cardinality */
+
+    /* Timestamp */
+
     private OffsetDateTime createdAt;
 
     private OffsetDateTime updatedAt;

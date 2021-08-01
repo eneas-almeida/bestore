@@ -11,6 +11,11 @@ public class OrderDTO {
 
     private Long id;
 
+
+    /* Cardinality */
+
+    /* Timestamp */
+
     private OffsetDateTime createdAt;
 
     private OffsetDateTime updatedAt;
