@@ -29,8 +29,8 @@ public class PaymentBillet extends Payment {
 
     /* Constructors */
 
-    public PaymentBillet(PaymentState state, Order order, OffsetDateTime dueDate, OffsetDateTime payDay) {
-        super(state, order);
+    public PaymentBillet(Double purchaseAmount, PaymentState state, Order order, OffsetDateTime dueDate, OffsetDateTime payDay) {
+        super(purchaseAmount, state, order);
         this.dueDate = dueDate;
         this.payDay = payDay;
     }

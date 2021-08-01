@@ -6,6 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreatePaymentDTO {
+
+    /* Attributes */
     
     private String state;
 }

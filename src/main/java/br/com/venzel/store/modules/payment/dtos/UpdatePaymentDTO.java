@@ -7,5 +7,7 @@ import lombok.Setter;
 @Setter
 public class UpdatePaymentDTO {
     
+    /* Attributes */
+    
     private String state;
 }

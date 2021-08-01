@@ -40,7 +40,7 @@ public abstract class Payment {
     @Column(nullable = false)
     private Integer state = 1;
 
-    @Column(nullable = true, length = 12)
+    @Column(nullable = false, length = 12)
     private Double purchaseAmount;
 
     /* Timestamps */
@@ -60,8 +60,9 @@ public abstract class Payment {
 
     /* Constructors */
 
-    public Payment(PaymentState state, Order order) {
+    public Payment(Double purchaseAmount, PaymentState state, Order order) {
         super();
+        this.purchaseAmount = purchaseAmount;
 		this.state = (state == null) ? null : state.getCode();
 		this.order = order;
     }

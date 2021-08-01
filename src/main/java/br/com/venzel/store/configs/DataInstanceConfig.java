@@ -88,13 +88,13 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* Payment */
 
-        Payment py1 = new PaymentCard(PaymentState.PENDING, od1, 3);
+        Payment py1 = new PaymentCard(300.21, PaymentState.PENDING, od1, 3);
         od1.setPayment(py1);
 
-        Payment py2 = new PaymentCard(PaymentState.PENDING, od2, 6);
+        Payment py2 = new PaymentCard(402.28, PaymentState.PENDING, od2, 6);
         od2.setPayment(py2);
 
-        Payment py3 = new PaymentCard(PaymentState.PENDING, od3, 12);
+        Payment py3 = new PaymentCard(529.44, PaymentState.PENDING, od3, 12);
         od3.setPayment(py3);
 
         us1.getOrders().addAll(Arrays.asList(od1, od2));
