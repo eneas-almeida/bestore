@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.venzel.store.modules.product.dtos.CategoryDTO;
+import br.com.venzel.store.modules.product.dtos.CreateCategoryDTO;
+import br.com.venzel.store.modules.product.dtos.UpdateCategoryDTO;
 import br.com.venzel.store.modules.product.entities.Category;
 
 @Component
@@ -26,11 +28,11 @@ public class CategoryMapper {
                     .collect(Collectors.toList());
     }
 
-    public Category toEntity(CategoryDTO dto) {
+    public Category toEntity(CreateCategoryDTO dto) {
         return modelMapper.map(dto, Category.class);
     }
 
-    public void toCopyEntity(CategoryDTO dto, Category category) {
+    public void toCopyEntity(UpdateCategoryDTO dto, Category category) {
         modelMapper.map(dto, category);
     }
 }

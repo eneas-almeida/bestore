@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.product.dtos.ProductDTO;
+import br.com.venzel.store.modules.product.dtos.UpdateProductDTO;
 import br.com.venzel.store.modules.product.entities.Product;
 import br.com.venzel.store.modules.product.mappers.ProductMapper;
 import br.com.venzel.store.modules.product.repositories.ProductRepository;
@@ -23,7 +24,7 @@ public class UpdateProductService {
     private ProductMapper productMapper;
 
     @Transactional
-    public ProductDTO execute(ProductDTO dto, Long id) {
+    public ProductDTO execute(UpdateProductDTO dto, Long id) {
 
         Optional<Product> optionalEntity = productRepository.findById(id);
 
@@ -31,14 +32,9 @@ public class UpdateProductService {
             throw new UserNotFoundException(ProductMessageUtils.PRODUCT_NOT_FOUND);
         }
 
-        /*
-            Update data
+        Product product = optionalEntity.get();
 
-            FALTA FAZER!
-
-        */
-
-        Product product = productMapper.toEntity(dto);
+        productMapper.toCopyEntity(dto, product);
 
         return productMapper.toDTO(product);
     }

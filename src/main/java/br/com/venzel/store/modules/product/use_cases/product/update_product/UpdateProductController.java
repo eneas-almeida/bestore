@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.venzel.store.modules.product.dtos.ProductDTO;
+import br.com.venzel.store.modules.product.dtos.UpdateProductDTO;
 
 @RestController
 @RequestMapping("/products")
@@ -17,7 +18,7 @@ public class UpdateProductController {
     private UpdateProductService updateProductService;
 
     @PutMapping("/{id}")
-    public ProductDTO handle(@RequestBody ProductDTO dto, @PathVariable Long id) {
+    public ProductDTO handle(@RequestBody UpdateProductDTO dto, @PathVariable Long id) {
 
         return updateProductService.execute(dto, id);
     }

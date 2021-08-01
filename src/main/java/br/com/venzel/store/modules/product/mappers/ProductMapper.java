@@ -7,7 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.venzel.store.modules.product.dtos.CreateProductDTO;
 import br.com.venzel.store.modules.product.dtos.ProductDTO;
+import br.com.venzel.store.modules.product.dtos.UpdateProductDTO;
 import br.com.venzel.store.modules.product.entities.Product;
 
 @Component
@@ -26,11 +28,11 @@ public class ProductMapper {
                     .collect(Collectors.toList());
     }
 
-    public Product toEntity(ProductDTO dto) {
+    public Product toEntity(CreateProductDTO dto) {
         return modelMapper.map(dto, Product.class);
     }
 
-    public void toCopyEntity(ProductDTO dto, Product product) {
+    public void toCopyEntity(UpdateProductDTO dto, Product product) {
         modelMapper.map(dto, product);
     }
 }

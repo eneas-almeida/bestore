@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.product.dtos.CategoryDTO;
+import br.com.venzel.store.modules.product.dtos.UpdateCategoryDTO;
 import br.com.venzel.store.modules.product.entities.Category;
 import br.com.venzel.store.modules.product.mappers.CategoryMapper;
 import br.com.venzel.store.modules.product.repositories.CategoryRepository;
@@ -23,7 +24,7 @@ public class UpdateCategoryService {
     private CategoryMapper categoryMapper;
 
     @Transactional
-    public CategoryDTO execute(CategoryDTO dto, Long id) {
+    public CategoryDTO execute(UpdateCategoryDTO dto, Long id) {
 
         Optional<Category> optionalEntity = categoryRepository.findById(id);
 
@@ -31,14 +32,9 @@ public class UpdateCategoryService {
             throw new UserNotFoundException(CategoryMessageUtils.CATEGORY_NOT_FOUND);
         }
         
-        /*
-            Update data
+        Category category = optionalEntity.get();
 
-            FALTA FAZER!
-
-        */
-
-        Category category = categoryMapper.toEntity(dto);
+        categoryMapper.toCopyEntity(dto, category);
 
         return categoryMapper.toDTO(category);
     } 

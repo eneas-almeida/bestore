@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.product.dtos.CategoryDTO;
+import br.com.venzel.store.modules.product.dtos.CreateCategoryDTO;
 import br.com.venzel.store.modules.product.entities.Category;
 import br.com.venzel.store.modules.product.exceptions.category.CategoryAlreadyExistsException;
 import br.com.venzel.store.modules.product.mappers.CategoryMapper;
@@ -23,7 +24,7 @@ public class CreateCategoryService {
     private CategoryMapper categoryMapper;
 
     @Transactional
-    public CategoryDTO execute(CategoryDTO dto) {
+    public CategoryDTO execute(CreateCategoryDTO dto) {
         Optional<Category> optionalEntity = categoryRepository.findOneByName(dto.getName());
 
         if (optionalEntity.isPresent()) {
