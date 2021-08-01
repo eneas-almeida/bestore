@@ -36,7 +36,7 @@ public class Payment {
     @Column(nullable = false)
     private Integer state = 1;
 
-    /* Timestamp */
+    /* Timestamps */
 
     @Column(nullable = false, columnDefinition = "datetime")
     @CreationTimestamp
@@ -54,6 +54,7 @@ public class Payment {
     /* Constructors */
 
     public Payment(PaymentState State) {
+        super();
         this.state = State.getCode();
     }
 
