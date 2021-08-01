@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.venzel.store.modules.payment.dtos.CreatePaymentDTO;
 import br.com.venzel.store.modules.payment.dtos.PaymentDTO;
 import br.com.venzel.store.modules.payment.entities.Payment;
-import br.com.venzel.store.modules.payment.mapper.PaymentMapper;
+import br.com.venzel.store.modules.payment.mappers.PaymentMapper;
 import br.com.venzel.store.modules.payment.repositories.PaymentRepository;
 
 @Service

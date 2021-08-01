@@ -1,4 +1,4 @@
-package br.com.venzel.store.modules.payment.mapper;
+package br.com.venzel.store.modules.payment.mappers;
 
 import java.util.List;
 import java.util.stream.Collectors;
