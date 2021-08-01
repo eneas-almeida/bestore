@@ -17,8 +17,6 @@ public class UserDTO {
 
     private String birthday;
 
-    private String password;
-
     private String avatar;
 
     private Boolean activated;

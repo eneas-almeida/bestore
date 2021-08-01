@@ -45,7 +45,7 @@ public class User {
 
     /* Activated */
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Boolean activated = Boolean.FALSE;
 
     public void active() {
@@ -58,7 +58,7 @@ public class User {
 
     /* Allowed */
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Boolean allowed = Boolean.TRUE;
 
     public void allow() {

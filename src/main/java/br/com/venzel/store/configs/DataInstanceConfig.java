@@ -3,6 +3,7 @@ package br.com.venzel.store.configs;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +16,7 @@ import br.com.venzel.store.modules.product.entities.Product;
 import br.com.venzel.store.modules.product.repositories.CategoryRepository;
 import br.com.venzel.store.modules.product.repositories.ProductRepository;
 import br.com.venzel.store.modules.user.entities.User;
+import br.com.venzel.store.modules.user.providers.hash_provider.HashProvider;
 import br.com.venzel.store.modules.user.repositories.UserRepository;
 
 @Configuration
@@ -28,6 +30,10 @@ public class DataInstanceConfig implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Qualifier("mockHashProvider")
+    @Autowired
+    private HashProvider hashProvider;
 
     @Autowired
     private OrderRepository orderRepository;
@@ -48,17 +54,17 @@ public class DataInstanceConfig implements CommandLineRunner {
         Product p2 = new Product("arroz", 7.44);
         Product p3 = new Product("cuzcuz", 3.76);
 
-        User u1 = new User("Tiago Rizzo", "tiago@gmail.com", "boladegudi");
-        User u2 = new User("Alex Moura", "alex@gmail.com", "cotonetepodre");
-        User u3 = new User("Liz Venzel", "liz@gmail.com", "gaioladepassaro");
+        User u1 = new User("Tiago Rizzo", "tiago@gmail.com", hashProvider.generateHash("tiago"));
+        User u2 = new User("Alex Moura", "alex@gmail.com", hashProvider.generateHash("alex"));
+        User u3 = new User("Liz Venzel", "liz@gmail.com", hashProvider.generateHash("liz"));
 
         Order o1 = new Order();
         Order o2 = new Order();
         Order o3 = new Order();
 
-        Payment py1 = new Payment("SEPARATE");
-        Payment py2 = new Payment("SEPARATE");
-        Payment py3 = new Payment("SEPARATE");
+        Payment py1 = new Payment("SEPARACAO");
+        Payment py2 = new Payment("SEPARACAO");
+        Payment py3 = new Payment("SEPARACAO");
 
         /* */
 
