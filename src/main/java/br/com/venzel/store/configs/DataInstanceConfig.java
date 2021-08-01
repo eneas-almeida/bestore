@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import br.com.venzel.store.modules.order.entities.Order;
+import br.com.venzel.store.modules.order.repositories.OrderRepository;
 import br.com.venzel.store.modules.product.entities.Category;
 import br.com.venzel.store.modules.product.entities.Product;
 import br.com.venzel.store.modules.product.repositories.CategoryRepository;
@@ -25,6 +27,9 @@ public class DataInstanceConfig implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
     @Override
     public void run(String... args) throws Exception {
         
@@ -40,6 +45,10 @@ public class DataInstanceConfig implements CommandLineRunner {
         User u1 = new User("Tiago Rizzo", "tiago@gmail.com", "boladegudi");
         User u2 = new User("Alex Moura", "alex@gmail.com", "cotonetepodre");
         User u3 = new User("Liz Venzel", "liz@gmail.com", "gaioladepassaro");
+
+        Order o1 = new Order();
+        Order o2 = new Order();
+        Order o3 = new Order();
 
         /* */
 
@@ -57,5 +66,6 @@ public class DataInstanceConfig implements CommandLineRunner {
         categoryRepository.saveAll(Arrays.asList(c1, c2));
         productRepository.saveAll(Arrays.asList(p1, p2, p3));
         userRepository.saveAll(Arrays.asList(u1, u2, u3));
+        orderRepository.saveAll(Arrays.asList(o1, o2, o3));
     }
 }

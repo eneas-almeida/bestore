@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.order.dtos.OrderDTO;
+import br.com.venzel.store.modules.order.dtos.UpdateOrderDTO;
 import br.com.venzel.store.modules.order.entities.Order;
 import br.com.venzel.store.modules.order.exceptions.OrderNotFoundException;
 import br.com.venzel.store.modules.order.mapper.OrderMapper;
@@ -23,7 +24,7 @@ public class UpdateOrderService {
     private OrderMapper orderMapper;
 
     @Transactional
-    public OrderDTO execute(OrderDTO dto, Long id) {
+    public OrderDTO execute(UpdateOrderDTO dto, Long id) {
 
         Optional<Order> optionalEntity = orderRepository.findById(id);
 
@@ -31,13 +32,9 @@ public class UpdateOrderService {
             throw new OrderNotFoundException(OrderMessageUtils.ORDER_NOT_FOUND);
         }
 
-        /*
-            Update data
+        Order order = optionalEntity.get();
 
-            FALTA FAZER!
-        */
-
-        Order order = orderMapper.toEntity(dto);
+        orderMapper.toCopyEntity(dto, order);        
 
         return orderMapper.toDTO(order);
     }

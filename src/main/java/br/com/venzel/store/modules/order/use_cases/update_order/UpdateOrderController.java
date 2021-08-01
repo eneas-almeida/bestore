@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.venzel.store.modules.order.dtos.OrderDTO;
+import br.com.venzel.store.modules.order.dtos.UpdateOrderDTO;
 
 @RestController
 @RequestMapping("/orders")
@@ -17,7 +18,7 @@ public class UpdateOrderController {
     private UpdateOrderService updateOrderService;
 
     @PutMapping("/{id}")
-    public OrderDTO handle(@RequestBody OrderDTO dto, @PathVariable Long id) {
+    public OrderDTO handle(@RequestBody UpdateOrderDTO dto, @PathVariable Long id) {
 
         return updateOrderService.execute(dto, id);
     }

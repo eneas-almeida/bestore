@@ -12,4 +12,6 @@ public class OrderDTO {
     private Long id;
 
     private OffsetDateTime createdAt;
+
+    private OffsetDateTime updatedAt;
 }

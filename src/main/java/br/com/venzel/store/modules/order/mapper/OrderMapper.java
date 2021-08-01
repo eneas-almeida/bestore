@@ -7,7 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.venzel.store.modules.order.dtos.CreateOrderDTO;
 import br.com.venzel.store.modules.order.dtos.OrderDTO;
+import br.com.venzel.store.modules.order.dtos.UpdateOrderDTO;
 import br.com.venzel.store.modules.order.entities.Order;
 
 @Component
@@ -26,11 +28,11 @@ public class OrderMapper {
                     .collect(Collectors.toList());
     }
 
-    public Order toEntity(OrderDTO dto) {
+    public Order toEntity(CreateOrderDTO dto) {
         return modelMapper.map(dto, Order.class);
     }
 
-    public void toCopyEntity(OrderDTO dto, Order order) {
+    public void toCopyEntity(UpdateOrderDTO dto, Order order) {
         modelMapper.map(dto, order);
     }
 }

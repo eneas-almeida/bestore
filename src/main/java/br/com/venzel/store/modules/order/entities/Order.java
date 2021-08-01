@@ -12,14 +12,12 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "purchase_order")
@@ -32,7 +30,7 @@ public class Order {
 
     /* Activated */
 
-    @Builder.Default
+    @Column(nullable = true)
     private Boolean activated = Boolean.FALSE;
 
     public void active() {
@@ -55,4 +53,9 @@ public class Order {
 
     @Column(nullable = true, columnDefinition = "datetime")
     private OffsetDateTime deletedAt;
+
+    /* Constructor */
+
+    /* Implements! */
+
 }

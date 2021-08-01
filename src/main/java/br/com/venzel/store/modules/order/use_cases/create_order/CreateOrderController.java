@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.venzel.store.modules.order.dtos.CreateOrderDTO;
 import br.com.venzel.store.modules.order.dtos.OrderDTO;
 
 @RestController
@@ -19,7 +20,7 @@ public class CreateOrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderDTO handle(@RequestBody OrderDTO dto) {
+    public OrderDTO handle(@RequestBody CreateOrderDTO dto) {
 
         return createOrderService.execute(dto);
     }
