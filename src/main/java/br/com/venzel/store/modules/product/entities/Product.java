@@ -16,6 +16,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -86,19 +88,7 @@ public class Product {
 
     /* Getters & Setters */
 
-    /* Cardinalities */
-
-    @ManyToMany
-    @JoinTable(name = "product_category",
-                joinColumns = @JoinColumn(name = "product_id"),
-                inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<Category> categories = new ArrayList<>();
-
-    @OneToMany(mappedBy = "id.product")
-    private Set<OrderItem> itens = new HashSet<>();
-
-    /* Getters & Setters especials */
-
+    @JsonIgnore
     public List<Order> getOrders() {
         
         List<Order> list = new ArrayList<>();
@@ -109,4 +99,15 @@ public class Product {
 
         return list;
     }
+
+    /* Cardinalities */
+
+    @ManyToMany
+    @JoinTable(name = "product_category",
+                joinColumns = @JoinColumn(name = "product_id"),
+                inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categories = new ArrayList<>();
+
+    @OneToMany(mappedBy = "id.product")
+    private Set<OrderItem> itens = new HashSet<>();
 }

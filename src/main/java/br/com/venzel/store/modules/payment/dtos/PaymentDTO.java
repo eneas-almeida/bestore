@@ -2,9 +2,9 @@ package br.com.venzel.store.modules.payment.dtos;
 
 import java.time.OffsetDateTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import br.com.venzel.store.modules.order.dtos.OrderDTO;
+import br.com.venzel.store.modules.order.dtos.order.OrderDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +16,6 @@ public class PaymentDTO {
     
     private Long id;
 
-    private Double purchaseAmount;
-
     private String state;
     
     /* Timestamps */
@@ -28,6 +26,6 @@ public class PaymentDTO {
 
     /* Cardinalities */
 
-    @JsonIgnore
+    @JsonBackReference
     private OrderDTO order;
 }

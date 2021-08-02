@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import br.com.venzel.store.modules.order.dtos.OrderDTO;
+import br.com.venzel.store.modules.order.dtos.order.OrderDTO;
 import br.com.venzel.store.modules.user.dtos.address.AddressDTO;
 import br.com.venzel.store.modules.user.entities.types.UserType;
 import lombok.Getter;
@@ -49,7 +49,7 @@ public class UserDTO {
 
     /* Cardinalities */
 
-    @JsonIgnore
+    @JsonBackReference
     private List<OrderDTO> orders = new ArrayList<>();
 
     @JsonManagedReference

@@ -7,9 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.venzel.store.modules.order.dtos.CreateOrderDTO;
-import br.com.venzel.store.modules.order.dtos.OrderDTO;
-import br.com.venzel.store.modules.order.dtos.UpdateOrderDTO;
+import br.com.venzel.store.modules.order.dtos.order.CreateOrderDTO;
+import br.com.venzel.store.modules.order.dtos.order.OrderDTO;
+import br.com.venzel.store.modules.order.dtos.order.UpdateOrderDTO;
 import br.com.venzel.store.modules.order.entities.Order;
 
 @Component

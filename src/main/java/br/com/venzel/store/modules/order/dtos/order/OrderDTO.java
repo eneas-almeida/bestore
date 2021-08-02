@@ -1,7 +1,12 @@
-package br.com.venzel.store.modules.order.dtos;
+package br.com.venzel.store.modules.order.dtos.order;
 
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import br.com.venzel.store.modules.order.dtos.order_item.OrderItemDTO;
 import br.com.venzel.store.modules.payment.dtos.PaymentDTO;
 import br.com.venzel.store.modules.user.dtos.user.UserDTO;
 import lombok.Getter;
@@ -25,7 +30,11 @@ public class OrderDTO {
 
     /* Cardinalities */
 
-    private UserDTO user;
+    private Set<OrderItemDTO> itens = new HashSet<>();
 
+    @JsonManagedReference
     private PaymentDTO payment;
+
+    @JsonManagedReference
+    private UserDTO user;
 }

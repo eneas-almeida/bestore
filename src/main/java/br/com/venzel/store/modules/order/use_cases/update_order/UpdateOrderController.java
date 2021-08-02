@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.venzel.store.modules.order.dtos.OrderDTO;
-import br.com.venzel.store.modules.order.dtos.UpdateOrderDTO;
+import br.com.venzel.store.modules.order.dtos.order.OrderDTO;
+import br.com.venzel.store.modules.order.dtos.order.UpdateOrderDTO;
 
 @RestController
 @RequestMapping("/orders")

@@ -39,8 +39,6 @@ public class Order {
     @EqualsAndHashCode.Include
     private Long id;
 
-    /* Attributes */
-
     /* Activated */
 
     @Column(nullable = true)
@@ -76,16 +74,14 @@ public class Order {
 		this.user = user;
 	}
 
-    /* Getters & Setters */
-
     /* Cardinalities */
+
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> itens = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @OneToMany(mappedBy = "id.order")
-    private Set<OrderItem> itens = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Payment payment;

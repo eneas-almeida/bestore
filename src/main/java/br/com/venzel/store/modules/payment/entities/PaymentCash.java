@@ -16,7 +16,7 @@ public class PaymentCash extends Payment {
 
     /* Constructors */
 
-    public PaymentCash(Double purchaseAmount, PaymentState state, Order order) {
-        super(purchaseAmount, state, order);
+    public PaymentCash(PaymentState state, Order order) {
+        super(state, order);
     }
 }

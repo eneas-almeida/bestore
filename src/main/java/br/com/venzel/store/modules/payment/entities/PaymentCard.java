@@ -22,8 +22,8 @@ public class PaymentCard extends Payment {
 
     /* Constructors */
 
-    public PaymentCard(Double purchaseAmount, PaymentState state, Order order, Integer numberInstallments) {
-        super(purchaseAmount, state, order);
+    public PaymentCard( PaymentState state, Order order, Integer numberInstallments) {
+        super(state, order);
         this.numberInstallments = numberInstallments;
     }
 }

@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.venzel.store.modules.product.entities.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +21,7 @@ public class OrderItem {
 
     /* Id & strategy to generate */
 
+    @JsonIgnore
     @EmbeddedId
     @EqualsAndHashCode.Include
     private OrderItemPK id = new OrderItemPK();
@@ -47,13 +50,24 @@ public class OrderItem {
 
     /* Getters & Setters */
 
+	public double getSubTotal() {
+		return (price - discount) * quantity;
+	}
+
+    // @JsonIgnore
     public Order getOrder() {
         return id.getOrder();
     }
+
+	public void setOrder(Order order) {
+		id.setOrder(order);
+	}
 
     public Product getProduct() {
         return id.getProduct();
     }
 
-    /* Cardinalities */
+	public void setProduct(Product product) {
+		id.setProduct(product);
+	}
 }

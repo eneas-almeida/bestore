@@ -73,118 +73,118 @@ public class DataInstanceConfig implements CommandLineRunner {
         
         /* Category */
 
-        Category ct1 = new Category("cereais");
-        Category ct2 = new Category("padaria");
-        Category ct3 = new Category("mercearia");
+        Category ct_1 = new Category("cereais");
+        Category ct_2 = new Category("padaria");
+        Category ct_3 = new Category("mercearia");
 
         /* Product */
 
-        Product pt1 = new Product("feijao", 10.21);
-        Product pt2 = new Product("arroz", 7.44);
-        Product pt3 = new Product("cuzcuz", 3.76);
+        Product pt_1 = new Product("feijao", 10.21);
+        Product pt_2 = new Product("arroz", 7.44);
+        Product pt_3 = new Product("cuzcuz", 3.76);
 
         /* User */
 
-        User us1 = new User("Tiago Rizzo", "tiago@gmail.com", hashProvider.generateHash("tiago"), UserType.LEGAL_PERSON);
-        User us2 = new User("Alex Moura", "alex@gmail.com", hashProvider.generateHash("alex"), UserType.PHYSICAL_PERSON);
-        User us3 = new User("Liz Venzel", "liz@gmail.com", hashProvider.generateHash("liz"), UserType.LEGAL_PERSON);
+        User us_1 = new User("Tiago Rizzo", "tiago@gmail.com", hashProvider.generateHash("tiago"), UserType.LEGAL_PERSON);
+        User us_2 = new User("Alex Moura", "alex@gmail.com", hashProvider.generateHash("alex"), UserType.PHYSICAL_PERSON);
+        User us_3 = new User("Liz Venzel", "liz@gmail.com", hashProvider.generateHash("liz"), UserType.LEGAL_PERSON);
 
         /* Order */
 
-        Order or1 = new Order(us1);
-        Order or2 = new Order(us2);
-        Order or3 = new Order(us3);
+        Order or_1 = new Order(us_1);
+        Order or_2 = new Order(us_2);
+        Order or_3 = new Order(us_3);
 
         /* Payment */
 
-        Payment pg1 = new PaymentCard(300.21, PaymentState.PENDING, or1, 3);
-        or1.setPayment(pg1);
+        Payment pg_1 = new PaymentCard(PaymentState.PENDING, or_1, 3);
+        or_1.setPayment(pg_1);
 
-        Payment pg2 = new PaymentCard(402.28, PaymentState.PENDING, or2, 6);
-        or2.setPayment(pg2);
+        Payment pg_2 = new PaymentCard(PaymentState.PENDING, or_2, 6);
+        or_2.setPayment(pg_2);
 
-        Payment pg3 = new PaymentCard(529.44, PaymentState.PENDING, or3, 12);
-        or3.setPayment(pg3);
+        Payment pg_3 = new PaymentCard(PaymentState.PENDING, or_3, 12);
+        or_3.setPayment(pg_3);
 
-        us1.getOrders().addAll(Arrays.asList(or1, or2));
+        us_1.getOrders().addAll(Arrays.asList(or_1, or_2));
 
         /* State */
 
-        State st1 = new State("SP");
-        State st2 = new State("RJ");
-        State st3 = new State("PE");
-        State st4 = new State("PB");
+        State st_1 = new State("SP");
+        State st_2 = new State("RJ");
+        State st_3 = new State("PE");
+        State st_4 = new State("PB");
 
         /* City */
 
-        City cy1 = new City("Bauru", st1);
-        City cy2 = new City("Campinas", st1);
-        City cy3 = new City("Macae", st2);
-        City cy4 = new City("Recife", st3);
-        City cy5 = new City("Campina Grande", st4);
+        City cy_1 = new City("Bauru", st_1);
+        City cy_2 = new City("Campinas", st_1);
+        City cy_3 = new City("Macae", st_2);
+        City cy4 = new City("Recife", st_3);
+        City cy5 = new City("Campina Grande", st_4);
 
         /* Address */
 
-        Address ad1 = new Address("Rua 13 de maio", "213", null, null, "58429077", us1, cy1);
-        Address ad2 = new Address("Rua Pedro II", "34", null, null, "58429077", us2, cy2);
-        Address ad3 = new Address("Rua Afonso Campos", "90", null, null, "58429077", us1, cy3);
-        Address ad4 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us3, cy4);
-        Address ad5 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us1, cy4);
+        Address ad_1 = new Address("Rua 13 de maio", "213", null, null, "58429077", us_1, cy_1);
+        Address ad_2 = new Address("Rua Pedro II", "34", null, null, "58429077", us_2, cy_2);
+        Address ad_3 = new Address("Rua Afonso Campos", "90", null, null, "58429077", us_1, cy_3);
+        Address ad_4 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us_3, cy4);
+        Address ad_5 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us_1, cy4);
 
         /* OrdeItem */
 
-        OrderItem oi1 = new OrderItem(or1, pt1, 0.00, 1, 197.03);
-        OrderItem oi2 = new OrderItem(or1, pt3, 0.00, 2, 336.28);
-        OrderItem oi3 = new OrderItem(or2, pt2, 10.00, 1, 421.28);
+        OrderItem oi_1 = new OrderItem(or_1, pt_1, 0.00, 3, 11.21);
+        OrderItem oi_2 = new OrderItem(or_1, pt_3, 0.00, 2, 7.45);
+        OrderItem oi_3 = new OrderItem(or_2, pt_2, 10.00, 4, 4.28);
 
-        or1.getItens().addAll(Arrays.asList(oi1, oi2));
-        or2.getItens().addAll(Arrays.asList(oi3));
+        or_1.getItens().addAll(Arrays.asList(oi_1, oi_2));
+        or_2.getItens().addAll(Arrays.asList(oi_3));
 
-        pt1.getItens().addAll(Arrays.asList(oi1));
-        pt2.getItens().addAll(Arrays.asList(oi3));
-        pt3.getItens().addAll(Arrays.asList(oi2));
+        pt_1.getItens().addAll(Arrays.asList(oi_1));
+        pt_2.getItens().addAll(Arrays.asList(oi_3));
+        pt_3.getItens().addAll(Arrays.asList(oi_2));
 
         /* User : Add all address */
 
-        us1.getAdresses().addAll(Arrays.asList(ad1, ad2));
-        us2.getAdresses().addAll(Arrays.asList(ad3));
-        us3.getAdresses().addAll(Arrays.asList(ad4));
-        us3.getAdresses().addAll(Arrays.asList(ad5));
+        us_1.getAdresses().addAll(Arrays.asList(ad_1, ad_2));
+        us_2.getAdresses().addAll(Arrays.asList(ad_3));
+        us_3.getAdresses().addAll(Arrays.asList(ad_4));
+        us_3.getAdresses().addAll(Arrays.asList(ad_5));
 
         /* User : Add all telephones */
 
-        us1.getTelephones().addAll(Arrays.asList("3332020", "89122311", "32001222"));
-        us2.getTelephones().addAll(Arrays.asList("3012123", "44122314", "72315522"));
-        us3.getTelephones().addAll(Arrays.asList("6323442", "32454423", "43334768"));
+        us_1.getTelephones().addAll(Arrays.asList("3332020", "89122311", "32001222"));
+        us_2.getTelephones().addAll(Arrays.asList("3012123", "44122314", "72315522"));
+        us_3.getTelephones().addAll(Arrays.asList("6323442", "32454423", "43334768"));
 
         /* Category : Add all products */
 
-        ct1.getProducts().addAll(Arrays.asList(pt1, pt2, pt3));
-        ct2.getProducts().addAll(Arrays.asList(pt2));
+        ct_1.getProducts().addAll(Arrays.asList(pt_1, pt_2, pt_3));
+        ct_2.getProducts().addAll(Arrays.asList(pt_2));
 
         /* */
 
-        pt1.getCategories().addAll(Arrays.asList(ct1));
-        pt2.getCategories().addAll(Arrays.asList(ct1, ct2));
-        pt3.getCategories().addAll(Arrays.asList(ct1));
+        pt_1.getCategories().addAll(Arrays.asList(ct_1));
+        pt_2.getCategories().addAll(Arrays.asList(ct_1, ct_2));
+        pt_3.getCategories().addAll(Arrays.asList(ct_1));
 
         /* Product : Add all categories */
 
-        st1.getCities().addAll(Arrays.asList(cy1, cy2));
-        st2.getCities().addAll(Arrays.asList(cy3));
-        st3.getCities().addAll(Arrays.asList(cy4));
-        st4.getCities().addAll(Arrays.asList(cy5));
+        st_1.getCities().addAll(Arrays.asList(cy_1, cy_2));
+        st_2.getCities().addAll(Arrays.asList(cy_3));
+        st_3.getCities().addAll(Arrays.asList(cy4));
+        st_4.getCities().addAll(Arrays.asList(cy5));
 
         /* Repositories : Add all */
 
-        categoryRepository.saveAll(Arrays.asList(ct1, ct2, ct3));
-        productRepository.saveAll(Arrays.asList(pt1, pt2, pt3));
-        userRepository.saveAll(Arrays.asList(us1, us2, us3));
-        stateRepository.saveAll(Arrays.asList(st1, st2, st3, st4));
-        cityRepository.saveAll(Arrays.asList(cy1, cy2, cy3, cy4, cy5));
-        addressRepository.saveAll(Arrays.asList(ad1, ad2, ad3, ad4, ad5));
-        orderRepository.saveAll(Arrays.asList(or1, or2, or3));
-        paymentRepository.saveAll(Arrays.asList(pg1, pg2, pg3));
-        orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3));
+        categoryRepository.saveAll(Arrays.asList(ct_1, ct_2, ct_3));
+        productRepository.saveAll(Arrays.asList(pt_1, pt_2, pt_3));
+        userRepository.saveAll(Arrays.asList(us_1, us_2, us_3));
+        stateRepository.saveAll(Arrays.asList(st_1, st_2, st_3, st_4));
+        cityRepository.saveAll(Arrays.asList(cy_1, cy_2, cy_3, cy4, cy5));
+        addressRepository.saveAll(Arrays.asList(ad_1, ad_2, ad_3, ad_4, ad_5));
+        orderRepository.saveAll(Arrays.asList(or_1, or_2, or_3));
+        paymentRepository.saveAll(Arrays.asList(pg_1, pg_2, pg_3));
+        orderItemRepository.saveAll(Arrays.asList(oi_1, oi_2, oi_3));
     }
 }
