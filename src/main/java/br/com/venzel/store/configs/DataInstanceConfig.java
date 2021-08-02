@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.venzel.store.modules.order.entities.Order;
+import br.com.venzel.store.modules.order.entities.OrderItem;
+import br.com.venzel.store.modules.order.repositories.OrderItemRepository;
 import br.com.venzel.store.modules.order.repositories.OrderRepository;
 import br.com.venzel.store.modules.payment.entities.Payment;
 import br.com.venzel.store.modules.payment.entities.PaymentCard;
@@ -30,6 +32,8 @@ import br.com.venzel.store.modules.user.repositories.UserRepository;
 
 @Configuration
 public class DataInstanceConfig implements CommandLineRunner {
+
+    /* Repositories injecteds */
     
     @Autowired
     private CategoryRepository categoryRepository;
@@ -59,20 +63,25 @@ public class DataInstanceConfig implements CommandLineRunner {
     @Autowired
     private AddressRepository addressRepository;
 
+    @Autowired
+    private OrderItemRepository orderItemRepository;
+
+    /* Auto execute method */
+
     @Override
     public void run(String... args) throws Exception {
         
         /* Category */
 
-        Category ca1 = new Category("cereais");
-        Category ca2 = new Category("padaria");
-        Category ca3 = new Category("mercearia");
+        Category ct1 = new Category("cereais");
+        Category ct2 = new Category("padaria");
+        Category ct3 = new Category("mercearia");
 
         /* Product */
 
-        Product pd1 = new Product("feijao", 10.21);
-        Product pd2 = new Product("arroz", 7.44);
-        Product pd3 = new Product("cuzcuz", 3.76);
+        Product pt1 = new Product("feijao", 10.21);
+        Product pt2 = new Product("arroz", 7.44);
+        Product pt3 = new Product("cuzcuz", 3.76);
 
         /* User */
 
@@ -82,22 +91,22 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* Order */
 
-        Order od1 = new Order(us1);
-        Order od2 = new Order(us2);
-        Order od3 = new Order(us3);
+        Order or1 = new Order(us1);
+        Order or2 = new Order(us2);
+        Order or3 = new Order(us3);
 
         /* Payment */
 
-        Payment py1 = new PaymentCard(300.21, PaymentState.PENDING, od1, 3);
-        od1.setPayment(py1);
+        Payment pg1 = new PaymentCard(300.21, PaymentState.PENDING, or1, 3);
+        or1.setPayment(pg1);
 
-        Payment py2 = new PaymentCard(402.28, PaymentState.PENDING, od2, 6);
-        od2.setPayment(py2);
+        Payment pg2 = new PaymentCard(402.28, PaymentState.PENDING, or2, 6);
+        or2.setPayment(pg2);
 
-        Payment py3 = new PaymentCard(529.44, PaymentState.PENDING, od3, 12);
-        od3.setPayment(py3);
+        Payment pg3 = new PaymentCard(529.44, PaymentState.PENDING, or3, 12);
+        or3.setPayment(pg3);
 
-        us1.getOrders().addAll(Arrays.asList(od1, od2));
+        us1.getOrders().addAll(Arrays.asList(or1, or2));
 
         /* State */
 
@@ -108,19 +117,32 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* City */
 
-        City ct1 = new City("Bauru", st1);
-        City ct2 = new City("Campinas", st1);
-        City ct3 = new City("Macae", st2);
-        City ct4 = new City("Recife", st3);
-        City ct5 = new City("Campina Grande", st4);
+        City cy1 = new City("Bauru", st1);
+        City cy2 = new City("Campinas", st1);
+        City cy3 = new City("Macae", st2);
+        City cy4 = new City("Recife", st3);
+        City cy5 = new City("Campina Grande", st4);
 
         /* Address */
 
-        Address ad1 = new Address("Rua 13 de maio", "213", null, null, "58429077", us1, ct1);
-        Address ad2 = new Address("Rua Pedro II", "34", null, null, "58429077", us2, ct2);
-        Address ad3 = new Address("Rua Afonso Campos", "90", null, null, "58429077", us3, ct3);
-        Address ad4 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us3, ct4);
-        Address ad5 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us1, ct4);
+        Address ad1 = new Address("Rua 13 de maio", "213", null, null, "58429077", us1, cy1);
+        Address ad2 = new Address("Rua Pedro II", "34", null, null, "58429077", us2, cy2);
+        Address ad3 = new Address("Rua Afonso Campos", "90", null, null, "58429077", us1, cy3);
+        Address ad4 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us3, cy4);
+        Address ad5 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us1, cy4);
+
+        /* OrdeItem */
+
+        OrderItem oi1 = new OrderItem(or1, pt1, 0.00, 1, 197.03);
+        OrderItem oi2 = new OrderItem(or1, pt3, 0.00, 2, 336.28);
+        OrderItem oi3 = new OrderItem(or2, pt2, 10.00, 1, 421.28);
+
+        or1.getItens().addAll(Arrays.asList(oi1, oi2));
+        or2.getItens().addAll(Arrays.asList(oi3));
+
+        pt1.getItens().addAll(Arrays.asList(oi1));
+        pt2.getItens().addAll(Arrays.asList(oi3));
+        pt3.getItens().addAll(Arrays.asList(oi2));
 
         /* User : Add all address */
 
@@ -137,31 +159,32 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* Category : Add all products */
 
-        ca1.getProducts().addAll(Arrays.asList(pd1, pd2, pd3));
-        ca2.getProducts().addAll(Arrays.asList(pd2));
+        ct1.getProducts().addAll(Arrays.asList(pt1, pt2, pt3));
+        ct2.getProducts().addAll(Arrays.asList(pt2));
 
         /* */
 
-        pd1.getCategories().addAll(Arrays.asList(ca1));
-        pd2.getCategories().addAll(Arrays.asList(ca1, ca2));
-        pd3.getCategories().addAll(Arrays.asList(ca1));
+        pt1.getCategories().addAll(Arrays.asList(ct1));
+        pt2.getCategories().addAll(Arrays.asList(ct1, ct2));
+        pt3.getCategories().addAll(Arrays.asList(ct1));
 
         /* Product : Add all categories */
 
-        st1.getCities().addAll(Arrays.asList(ct1, ct2));
-        st2.getCities().addAll(Arrays.asList(ct3));
-        st3.getCities().addAll(Arrays.asList(ct4));
-        st4.getCities().addAll(Arrays.asList(ct5));
+        st1.getCities().addAll(Arrays.asList(cy1, cy2));
+        st2.getCities().addAll(Arrays.asList(cy3));
+        st3.getCities().addAll(Arrays.asList(cy4));
+        st4.getCities().addAll(Arrays.asList(cy5));
 
         /* Repositories : Add all */
 
-        categoryRepository.saveAll(Arrays.asList(ca1, ca2, ca3));
-        productRepository.saveAll(Arrays.asList(pd1, pd2, pd3));
+        categoryRepository.saveAll(Arrays.asList(ct1, ct2, ct3));
+        productRepository.saveAll(Arrays.asList(pt1, pt2, pt3));
         userRepository.saveAll(Arrays.asList(us1, us2, us3));
         stateRepository.saveAll(Arrays.asList(st1, st2, st3, st4));
-        cityRepository.saveAll(Arrays.asList(ct1, ct2, ct3, ct4, ct5));
+        cityRepository.saveAll(Arrays.asList(cy1, cy2, cy3, cy4, cy5));
         addressRepository.saveAll(Arrays.asList(ad1, ad2, ad3, ad4, ad5));
-        orderRepository.saveAll(Arrays.asList(od1, od2, od3));
-        paymentRepository.saveAll(Arrays.asList(py1, py2, py3));
+        orderRepository.saveAll(Arrays.asList(or1, or2, or3));
+        paymentRepository.saveAll(Arrays.asList(pg1, pg2, pg3));
+        orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3));
     }
 }
