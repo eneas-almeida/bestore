@@ -76,12 +76,28 @@ public class DataInstanceConfig implements CommandLineRunner {
         Category ct_1 = new Category("cereais");
         Category ct_2 = new Category("padaria");
         Category ct_3 = new Category("mercearia");
+        Category ct_4 = new Category("ferramentas");
+        Category ct_5 = new Category("frios");
+        Category ct_6 = new Category("jardinagem");
+        Category ct_7 = new Category("bebidas");
+        Category ct_8 = new Category("limpeza");
+        Category ct_9 = new Category("pets");
+        Category ct_10 = new Category("grãos");
+        Category ct_11 = new Category("beleza");
+        Category ct_12 = new Category("frutas");
 
         /* Product */
 
         Product pt_1 = new Product("feijao", 10.21);
         Product pt_2 = new Product("arroz", 7.44);
         Product pt_3 = new Product("cuzcuz", 3.76);
+        Product pt_4 = new Product("açucar", 7.12);
+        Product pt_5 = new Product("manteiga", 12.09);
+        Product pt_6 = new Product("trigo", 4.15);
+        Product pt_7 = new Product("abacaxi", 1.27);
+        Product pt_8 = new Product("laranja", 3.76);
+        Product pt_9 = new Product("melão", 2.14);
+        Product pt_10 = new Product("fralda", 21.31);
 
         /* User */
 
@@ -161,6 +177,7 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         ct_1.getProducts().addAll(Arrays.asList(pt_1, pt_2, pt_3));
         ct_2.getProducts().addAll(Arrays.asList(pt_2));
+        ct_12.getProducts().addAll(Arrays.asList(pt_7, pt_8, pt_9, pt_10));
 
         /* */
 
@@ -177,8 +194,8 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* Repositories : Add all */
 
-        categoryRepository.saveAll(Arrays.asList(ct_1, ct_2, ct_3));
-        productRepository.saveAll(Arrays.asList(pt_1, pt_2, pt_3));
+        categoryRepository.saveAll(Arrays.asList(ct_1, ct_2, ct_3, ct_4, ct_5, ct_6, ct_7, ct_8, ct_9, ct_10, ct_11, ct_12));
+        productRepository.saveAll(Arrays.asList(pt_1, pt_2, pt_3, pt_4, pt_5, pt_6, pt_7, pt_8, pt_9, pt_10));
         userRepository.saveAll(Arrays.asList(us_1, us_2, us_3));
         stateRepository.saveAll(Arrays.asList(st_1, st_2, st_3, st_4));
         cityRepository.saveAll(Arrays.asList(cy_1, cy_2, cy_3, cy4, cy5));

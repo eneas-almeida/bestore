@@ -1,12 +1,7 @@
 package br.com.venzel.store.modules.product.dtos.category;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import br.com.venzel.store.modules.product.dtos.product.ProductDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +21,6 @@ public class CategoryDTO {
 
     /* Cardinalities */
 
-    @JsonManagedReference
-    private List<ProductDTO> products = new ArrayList<>();
+    // @JsonManagedReference
+    // private List<ProductDTO> products = new ArrayList<>();
 }
