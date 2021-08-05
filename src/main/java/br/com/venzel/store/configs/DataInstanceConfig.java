@@ -7,28 +7,28 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import br.com.venzel.store.modules.order.entities.Order;
-import br.com.venzel.store.modules.order.entities.OrderItem;
-import br.com.venzel.store.modules.order.repositories.OrderItemRepository;
-import br.com.venzel.store.modules.order.repositories.OrderRepository;
-import br.com.venzel.store.modules.payment.entities.Payment;
-import br.com.venzel.store.modules.payment.entities.PaymentCard;
-import br.com.venzel.store.modules.payment.entities.types.PaymentState;
-import br.com.venzel.store.modules.payment.repositories.PaymentRepository;
-import br.com.venzel.store.modules.product.entities.Category;
-import br.com.venzel.store.modules.product.entities.Product;
-import br.com.venzel.store.modules.product.repositories.CategoryRepository;
-import br.com.venzel.store.modules.product.repositories.ProductRepository;
-import br.com.venzel.store.modules.user.entities.Address;
-import br.com.venzel.store.modules.user.entities.City;
-import br.com.venzel.store.modules.user.entities.State;
-import br.com.venzel.store.modules.user.entities.User;
-import br.com.venzel.store.modules.user.entities.types.UserType;
-import br.com.venzel.store.modules.user.providers.hash_provider.HashProvider;
-import br.com.venzel.store.modules.user.repositories.AddressRepository;
-import br.com.venzel.store.modules.user.repositories.CityRepository;
-import br.com.venzel.store.modules.user.repositories.StateRepository;
-import br.com.venzel.store.modules.user.repositories.UserRepository;
+import br.com.venzel.store.modules.order.order.entities.Order;
+import br.com.venzel.store.modules.order.order.repositories.OrderRepository;
+import br.com.venzel.store.modules.order.order_item.entities.OrderItem;
+import br.com.venzel.store.modules.order.order_item.repositories.OrderItemRepository;
+import br.com.venzel.store.modules.payment.payment.entities.Payment;
+import br.com.venzel.store.modules.payment.payment.entities.PaymentCard;
+import br.com.venzel.store.modules.payment.payment.entities.types.PaymentState;
+import br.com.venzel.store.modules.payment.payment.repositories.PaymentRepository;
+import br.com.venzel.store.modules.product.category.entities.Category;
+import br.com.venzel.store.modules.product.category.repositories.CategoryRepository;
+import br.com.venzel.store.modules.product.product.entities.Product;
+import br.com.venzel.store.modules.product.product.repositories.ProductRepository;
+import br.com.venzel.store.modules.user.address.entities.Address;
+import br.com.venzel.store.modules.user.address.entities.City;
+import br.com.venzel.store.modules.user.address.entities.State;
+import br.com.venzel.store.modules.user.address.repositories.AddressRepository;
+import br.com.venzel.store.modules.user.address.repositories.CityRepository;
+import br.com.venzel.store.modules.user.address.repositories.StateRepository;
+import br.com.venzel.store.modules.user.user.entities.User;
+import br.com.venzel.store.modules.user.user.entities.types.UserType;
+import br.com.venzel.store.modules.user.user.providers.hash_provider.HashProvider;
+import br.com.venzel.store.modules.user.user.repositories.UserRepository;
 
 @Configuration
 public class DataInstanceConfig implements CommandLineRunner {
@@ -55,6 +55,9 @@ public class DataInstanceConfig implements CommandLineRunner {
     private PaymentRepository paymentRepository;
 
     @Autowired
+    private OrderItemRepository orderItemRepository;
+    
+    @Autowired
     private StateRepository stateRepository;
     
     @Autowired
@@ -62,9 +65,6 @@ public class DataInstanceConfig implements CommandLineRunner {
 
     @Autowired
     private AddressRepository addressRepository;
-
-    @Autowired
-    private OrderItemRepository orderItemRepository;
 
     /* Auto execute method */
 
