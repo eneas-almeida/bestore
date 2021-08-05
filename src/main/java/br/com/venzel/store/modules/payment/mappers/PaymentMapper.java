@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import br.com.venzel.store.modules.payment.dtos.CreatePaymentDTO;
@@ -26,6 +27,10 @@ public class PaymentMapper {
         return payments.stream()
                     .map(e -> toDTO(e))
                     .collect(Collectors.toList());
+    }
+
+    public Page<PaymentDTO> toCollectionPageModel(Page<Payment> categories) {
+        return categories.map(e -> toDTO(e));
     }
 
     public Payment toEntity(CreatePaymentDTO dto) {

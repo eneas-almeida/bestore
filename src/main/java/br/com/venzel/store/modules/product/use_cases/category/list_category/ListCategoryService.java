@@ -10,10 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.product.dtos.category.CategoryDTO;
 import br.com.venzel.store.modules.product.entities.Category;
+import br.com.venzel.store.modules.product.exceptions.category.CategoryNotFoundException;
 import br.com.venzel.store.modules.product.mappers.CategoryMapper;
 import br.com.venzel.store.modules.product.repositories.CategoryRepository;
 import br.com.venzel.store.modules.product.utils.CategoryMessageUtils;
-import br.com.venzel.store.modules.user.exceptions.user.UserNotFoundException;
 
 @Service
 public class ListCategoryService {
@@ -32,7 +32,7 @@ public class ListCategoryService {
         Page<Category> categories = categoryRepository.findAll(pageRequest);
 
         if (categories.isEmpty()) {
-            throw new UserNotFoundException(CategoryMessageUtils.CATEGORY_NOT_FOUND);
+            throw new CategoryNotFoundException(CategoryMessageUtils.CATEGORY_NOT_FOUND);
         }
 
         Page<CategoryDTO> pageCategoryDTO = categoryMapper.toCollectionPageModel(categories);
