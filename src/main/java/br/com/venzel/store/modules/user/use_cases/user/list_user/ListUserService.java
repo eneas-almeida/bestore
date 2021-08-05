@@ -1,8 +1,9 @@
 package br.com.venzel.store.modules.user.use_cases.user.list_user;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,14 +25,18 @@ public class ListUserService {
     private UserMapper userMapper;
     
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public List<UserDTO> execute() {
+    public Page<UserDTO> execute(Integer page, Integer linesPerPage, String orderBy, String direction) {
 
-        List<User> users = userRepository.findAll();
+        PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+
+        Page<User> users = userRepository.findAll(pageRequest);
 
         if (users.isEmpty()) {
             throw new UserNotFoundException(UserMessageUtils.USER_NOT_FOUND);
         }
 
-        return userMapper.toCollectionModel(users);
+        Page<UserDTO> pageUserDTO = userMapper.toCollectionPageModel(users);
+
+        return pageUserDTO;
     }
 }

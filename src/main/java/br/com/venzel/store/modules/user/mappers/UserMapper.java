@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import br.com.venzel.store.modules.user.dtos.user.CreateUserDTO;
@@ -26,6 +27,10 @@ public class UserMapper {
         return users.stream()
                     .map(e -> toDTO(e))
                     .collect(Collectors.toList());
+    }
+
+    public Page<UserDTO> toCollectionPageModel(Page<User> users) {
+        return users.map(e -> toDTO(e));
     }
 
     public User toEntity(CreateUserDTO dto) {
