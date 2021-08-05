@@ -25,28 +25,32 @@ import lombok.NoArgsConstructor;
 @Entity(name = "state")
 public class State {
 
+    /* Id & strategy to generate */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
 
+    /* Attributes */
+
     @Column(nullable = false, length = 50)
     private String name;
     
-     /* Cardinality */
-
-    @OneToMany(mappedBy = "state")
-    private List<City> cities = new ArrayList<>();
-
-    /* Timestamp */
+    /* Timestamps */
 
     @Column(nullable = false, columnDefinition = "datetime")
     @CreationTimestamp
     private OffsetDateTime createdAt;
     
-     /* Constructor */
+     /* Constructors */
 
     public State(String name) {
         this.name = name;
     }
+
+     /* Cardinalities */
+
+     @OneToMany(mappedBy = "state")
+     private List<City> cities = new ArrayList<>();
 }

@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 public class AddressDTO {
 
-    // private Long id;
+    private Long id;
 
     private String publicPlace;
 
@@ -24,6 +24,10 @@ public class AddressDTO {
 
     private String zipCode;
 
+    private String city;
+    
+    private String state;
+
     /* Timestamps */
     
     private OffsetDateTime createdAt;
@@ -34,6 +38,4 @@ public class AddressDTO {
     
     @JsonBackReference
     private UserDTO user;
-    
-    private CityDTO city;
 }

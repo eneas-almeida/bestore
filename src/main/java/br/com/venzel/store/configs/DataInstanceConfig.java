@@ -13,6 +13,7 @@ import br.com.venzel.store.modules.order.order_item.entities.OrderItem;
 import br.com.venzel.store.modules.order.order_item.repositories.OrderItemRepository;
 import br.com.venzel.store.modules.payment.payment.entities.Payment;
 import br.com.venzel.store.modules.payment.payment.entities.PaymentCard;
+import br.com.venzel.store.modules.payment.payment.entities.PaymentCash;
 import br.com.venzel.store.modules.payment.payment.entities.types.PaymentState;
 import br.com.venzel.store.modules.payment.payment.repositories.PaymentRepository;
 import br.com.venzel.store.modules.product.category.entities.Category;
@@ -116,7 +117,7 @@ public class DataInstanceConfig implements CommandLineRunner {
         Payment pg_1 = new PaymentCard(PaymentState.PENDING, or_1, 3);
         or_1.setPayment(pg_1);
 
-        Payment pg_2 = new PaymentCard(PaymentState.PENDING, or_2, 6);
+        Payment pg_2 = new PaymentCash(PaymentState.PENDING, or_2, 300.00);
         or_2.setPayment(pg_2);
 
         Payment pg_3 = new PaymentCard(PaymentState.PENDING, or_3, 12);
@@ -141,11 +142,11 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* Address */
 
-        Address ad_1 = new Address("Rua 13 de maio", "213", null, null, "58429077", us_1, cy_1);
-        Address ad_2 = new Address("Rua Pedro II", "34", null, null, "58429077", us_2, cy_2);
-        Address ad_3 = new Address("Rua Afonso Campos", "90", null, null, "58429077", us_1, cy_3);
-        Address ad_4 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us_3, cy4);
-        Address ad_5 = new Address("Avenida Santa Cruz", "102", null, null, "58429077", us_1, cy4);
+        Address ad_1 = new Address("Rua 13 de maio", "213", null, "Bodcongo", "58429077", "Campina Grande", "PB", us_1);
+        Address ad_2 = new Address("Rua Pedro II", "34", null, "Isabel", "58429077", "Campina Grande", "PB", us_2);
+        Address ad_3 = new Address("Rua Afonso Campos", "90", null, "Nacoes", "58429077", "Macae", "RJ", us_3);
+        Address ad_4 = new Address("Avenida Santa Cruz", "102", null, "Mangabeira", "58429077", "Recife", "PE", us_1);
+        Address ad_5 = new Address("Avenida Santa Cruz", "102", null, "Jose Pinheiro", "58429077", "Macae", "RJ", us_2);
 
         /* OrdeItem */
 

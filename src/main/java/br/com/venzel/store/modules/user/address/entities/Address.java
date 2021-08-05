@@ -44,11 +44,17 @@ public class Address {
     @Column(nullable = true, length = 100)
     private String complement;
 
-    @Column(nullable = true, length = 100)
+    @Column(nullable = false, length = 100)
     private String district;
 
     @Column(nullable = false, length = 10)
     private String zipCode;
+
+    @Column(nullable = false, length = 100)
+    private String city;
+
+    @Column(nullable = false, length = 2)
+    private String state;
     
     /* Timestamps */
 
@@ -64,25 +70,17 @@ public class Address {
     private OffsetDateTime deletedAt;
     
     /* Constructors */
-
-    public Address(String publicPlace, String number, String complement, String district, String zipCode) {
+   
+    public Address(String publicPlace, String number, String complement, String district, String zipCode, String city, String state, User user) {
         super();
         this.publicPlace = publicPlace;
         this.number = number;
         this.complement = complement;
         this.district = district;
         this.zipCode = zipCode;
-    }
-    
-    public Address(String publicPlace, String number, String complement, String district, String zipCode, User user, City city) {
-        super();
-        this.publicPlace = publicPlace;
-        this.number = number;
-        this.complement = complement;
-        this.district = district;
-        this.zipCode = zipCode;
-        this.user = user;
         this.city = city;
+        this.state = state;
+        this.user = user;
     }
 
     /* Cardinalities */
@@ -90,8 +88,4 @@ public class Address {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
 }

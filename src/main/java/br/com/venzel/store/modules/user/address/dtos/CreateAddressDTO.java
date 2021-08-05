@@ -1,6 +1,5 @@
 package br.com.venzel.store.modules.user.address.dtos;
 
-import br.com.venzel.store.modules.user.address.entities.City;
 import br.com.venzel.store.modules.user.user.entities.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +18,9 @@ public class CreateAddressDTO {
 
     private String zipCode;
 
-    private User user;
+    private String city;
+    
+    private String state;
 
-    private City city;
+    private User user;
 }

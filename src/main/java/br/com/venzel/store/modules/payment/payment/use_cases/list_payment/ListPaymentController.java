@@ -19,7 +19,7 @@ public class ListPaymentController {
     @GetMapping
     public Page<PaymentDTO> handle(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                     @RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
-                                    @RequestParam(value = "orderBy", defaultValue = "name") String orderBy,
+                                    @RequestParam(value = "orderBy", defaultValue = "createdAt") String orderBy,
                                     @RequestParam(value = "direction", defaultValue = "ASC") String direction) {
 
         return listPaymentService.execute(page, linesPerPage, orderBy, direction);

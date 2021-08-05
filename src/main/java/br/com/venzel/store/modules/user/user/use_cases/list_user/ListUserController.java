@@ -18,9 +18,9 @@ public class ListUserController {
 
     @GetMapping
     public Page<UserDTO> handle(@RequestParam(value = "page", defaultValue = "0") Integer page,
-                                @RequestParam(value = "linesPerPage", defaultValue = "4") Integer linesPerPage,
+                                @RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
                                 @RequestParam(value = "orderBy", defaultValue = "name") String orderBy,
-                                @RequestParam(value = "direction", defaultValue = "ASC") String direction) {
+                                @RequestParam(value = "direction", defaultValue = "DESC") String direction) {
 
         return listUserService.execute(page, linesPerPage, orderBy, direction);
     }

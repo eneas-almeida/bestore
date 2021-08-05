@@ -17,6 +17,8 @@ public class PaymentDTO {
     private Long id;
 
     private String state;
+
+    private String name;
     
     /* Timestamps */
     

@@ -30,6 +30,7 @@ public class PaymentBillet extends Payment {
     /* Constructors */
 
     public PaymentBillet(PaymentState state, Order order, OffsetDateTime dueDate, OffsetDateTime payDay) {
+        super("Billet", state, order);
         this.dueDate = dueDate;
         this.payDay = payDay;
     }
