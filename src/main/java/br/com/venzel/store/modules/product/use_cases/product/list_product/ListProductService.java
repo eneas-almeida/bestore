@@ -1,8 +1,9 @@
 package br.com.venzel.store.modules.product.use_cases.product.list_product;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,14 +25,18 @@ public class ListProductService {
     private ProductMapper productMapper;
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public List<ProductDTO> execute() {
+    public Page<ProductDTO> execute(Integer page, Integer linesPerPage, String orderBy, String direction) {
 
-        List<Product> products = productRepository.findAll();
+        PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+
+        Page<Product> products = productRepository.findAll(pageRequest);
 
         if (products.isEmpty()) {
             throw new ProductNotFoundException(ProductMessageUtils.PRODUCT_NOT_FOUND);
         }
 
-        return productMapper.toCollectionModel(products);
+        Page<ProductDTO> pageProductDTO = productMapper.toCollectionPageModel(products);
+
+        return pageProductDTO;
     }
 }

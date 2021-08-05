@@ -1,10 +1,10 @@
 package br.com.venzel.store.modules.product.use_cases.product.list_product;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.venzel.store.modules.product.dtos.product.ProductDTO;
@@ -17,7 +17,11 @@ public class ListProductController {
     private ListProductService listProductServices;
 
     @GetMapping
-    public List<ProductDTO> handle() {
-        return this.listProductServices.execute();
+    public Page<ProductDTO> handle(@RequestParam(value = "page", defaultValue = "0") Integer page,
+                                @RequestParam(value = "linesPerPage", defaultValue = "4") Integer linesPerPage,
+                                @RequestParam(value = "orderBy", defaultValue = "name") String orderBy,
+                                @RequestParam(value = "direction", defaultValue = "ASC") String direction) {
+
+        return listProductServices.execute(page, linesPerPage, orderBy, direction);
     }
 }

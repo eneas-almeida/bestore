@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import br.com.venzel.store.modules.product.dtos.category.CreateProductDTO;
@@ -26,6 +27,10 @@ public class ProductMapper {
         return products.stream()
                     .map(e -> toDTO(e))
                     .collect(Collectors.toList());
+    }
+
+    public Page<ProductDTO> toCollectionPageModel(Page<Product> categories) {
+        return categories.map(e -> toDTO(e));
     }
 
     public Product toEntity(CreateProductDTO dto) {
