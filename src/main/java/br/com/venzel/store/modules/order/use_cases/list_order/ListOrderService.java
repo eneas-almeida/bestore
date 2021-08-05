@@ -1,8 +1,9 @@
 package br.com.venzel.store.modules.order.use_cases.list_order;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,14 +25,18 @@ public class ListOrderService {
     private OrderMapper orderMapper;
     
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public List<OrderDTO> execute() {
+    public Page<OrderDTO> execute(Integer page, Integer linesPerPage, String orderBy, String direction) {
 
-        List<Order> orders = orderRepository.findAll();
+        PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+
+        Page<Order> orders = orderRepository.findAll(pageRequest);
 
         if (orders.isEmpty()) {
             throw new OrderNotFoundException(OrderMessageUtils.ORDER_NOT_FOUND);
         }
 
-        return orderMapper.toCollectionModel(orders);
+        Page<OrderDTO> pageOrderDTO = orderMapper.toCollectionPageModel(orders);
+
+        return pageOrderDTO;
     }
 }

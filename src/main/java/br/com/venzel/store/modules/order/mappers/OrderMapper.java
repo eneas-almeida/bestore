@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import br.com.venzel.store.modules.order.dtos.order.CreateOrderDTO;
@@ -26,6 +27,10 @@ public class OrderMapper {
         return orders.stream()
                     .map(e -> toDTO(e))
                     .collect(Collectors.toList());
+    }
+
+    public Page<OrderDTO> toCollectionPageModel(Page<Order> categories) {
+        return categories.map(e -> toDTO(e));
     }
 
     public Order toEntity(CreateOrderDTO dto) {
