@@ -54,14 +54,8 @@ public class User {
     @Column(nullable = false, unique = true, length = 50)
     private String email;
 
-    @Column(nullable = true, length = 10)
-    private String document;
-
     @Column(nullable = false, length = 50)
     private String password;
-
-    @Column(nullable = true, length = 50)
-    private String avatar;
 
     /* Activated attribute */
 
