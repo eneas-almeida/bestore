@@ -26,6 +26,8 @@ import br.com.venzel.store.modules.user.address.entities.State;
 import br.com.venzel.store.modules.user.address.repositories.AddressRepository;
 import br.com.venzel.store.modules.user.address.repositories.CityRepository;
 import br.com.venzel.store.modules.user.address.repositories.StateRepository;
+import br.com.venzel.store.modules.user.history.entities.History;
+import br.com.venzel.store.modules.user.history.repositories.HistoryRepository;
 import br.com.venzel.store.modules.user.user.entities.User;
 import br.com.venzel.store.modules.user.user.entities.types.UserType;
 import br.com.venzel.store.modules.user.user.providers.hash_provider.HashProvider;
@@ -66,6 +68,9 @@ public class DataInstanceConfig implements CommandLineRunner {
 
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private HistoryRepository historyRepository;
 
     /* Auto execute method */
 
@@ -154,6 +159,14 @@ public class DataInstanceConfig implements CommandLineRunner {
         OrderItem oi_2 = new OrderItem(or_1, pt_3, 0.00, 2, 7.45);
         OrderItem oi_3 = new OrderItem(or_2, pt_2, 10.00, 4, 4.28);
 
+        /* History */
+
+        History hy_1 = new History("Product created", us_1);
+        History hy_2 = new History("User deleted", us_1);
+        History hy_3 = new History("User deleted", us_2);
+
+        /* */
+
         or_1.getItens().addAll(Arrays.asList(oi_1, oi_2));
         or_2.getItens().addAll(Arrays.asList(oi_3));
 
@@ -204,5 +217,6 @@ public class DataInstanceConfig implements CommandLineRunner {
         orderRepository.saveAll(Arrays.asList(or_1, or_2, or_3));
         paymentRepository.saveAll(Arrays.asList(pg_1, pg_2, pg_3));
         orderItemRepository.saveAll(Arrays.asList(oi_1, oi_2, oi_3));
+        historyRepository.saveAll(Arrays.asList(hy_1, hy_2, hy_3));
     }
 }

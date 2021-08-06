@@ -20,6 +20,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import br.com.venzel.store.modules.order.order.entities.Order;
 import br.com.venzel.store.modules.user.address.entities.Address;
+import br.com.venzel.store.modules.user.history.entities.History;
 import br.com.venzel.store.modules.user.user.entities.types.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -141,4 +142,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Address> adresses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<History> histories = new ArrayList<>();
 }

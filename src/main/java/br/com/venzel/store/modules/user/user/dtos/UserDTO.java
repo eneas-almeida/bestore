@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.venzel.store.modules.order.order.dtos.OrderDTO;
 import br.com.venzel.store.modules.user.address.dtos.AddressDTO;
+import br.com.venzel.store.modules.user.history.dtos.HistoryDTO;
 import br.com.venzel.store.modules.user.user.entities.types.UserType;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +20,7 @@ import lombok.Setter;
 @Setter
 public class UserDTO {
 
-     /* Attributes */
+    /* Attributes */
 	
     private Long id;
 
@@ -54,4 +55,7 @@ public class UserDTO {
 
     @JsonManagedReference
     private List<AddressDTO> adresses = new ArrayList<>();
+
+    @JsonBackReference
+    private List<HistoryDTO> histories = new ArrayList<>();
 }

@@ -30,6 +30,8 @@ public class CreateUserService {
     @Transactional
     public UserDTO execute(CreateUserDTO dto) {
 
+        /* Verify user existence */
+
         Boolean userAlreadyExistsWithEmail = userRepository.existsByEmail(dto.getEmail());
 
         if (userAlreadyExistsWithEmail) {
@@ -40,11 +42,11 @@ public class CreateUserService {
         
         User user = userMapper.toEntity(dto);
         
-        /* Generate hash */
+        /* Generate password hash */
         
         user.setPassword(hashProvider.generateHash(dto.getPassword()));
         
-        /* Save in repository */
+        /* Save user in repository */
         
         userRepository.save(user);
 

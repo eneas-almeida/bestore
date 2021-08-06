@@ -1,19 +1,18 @@
-package br.com.venzel.store.modules.product.category.entities;
+package br.com.venzel.store.modules.user.history.entities;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import br.com.venzel.store.modules.product.product.entities.Product;
+import br.com.venzel.store.modules.user.user.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,8 +22,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "category")
-public class Category {
+@Entity(name = "history")
+public class History {
 
     /* Id & strategy to generate */
 
@@ -34,25 +33,27 @@ public class Category {
     private Long id;
 
     /* Attributes */
-
-    @Column(nullable = false, length = 50)
-    private String name;
+    
+    @Column(nullable = false, length = 100)
+    private String description;
 
     /* Timestamps */
 
-    @CreationTimestamp
     @Column(nullable = false, columnDefinition = "datetime")
+    @CreationTimestamp
     private OffsetDateTime createdAt;
 
     /* Constructors */
 
-    public Category(String name) {
+    public History(String description, User user) {
         super();
-        this.name = name;
+        this.description = description;
+        this.user = user;
     }
 
     /* Cardinalities */
-
-    @ManyToMany(mappedBy = "categories")
-    private List<Product> products = new ArrayList<>();
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
