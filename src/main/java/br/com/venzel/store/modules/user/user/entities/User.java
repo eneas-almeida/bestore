@@ -41,10 +41,12 @@ public class User {
     @EqualsAndHashCode.Include
     private Long id;
 
-    /* Attributes */
+    /* Type */
 
     @Column(nullable = false)
-    private Integer type = 1;
+    private Integer type = UserType.LEGAL_PERSON.getCode();
+    
+    /* Attributes */
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -116,7 +118,7 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.type = (type == null) ? null : type.getCode();
+        this.type = (type == null) ? UserType.LEGAL_PERSON.getCode() : type.getCode();
     }
 
     /* Getters & Setters */

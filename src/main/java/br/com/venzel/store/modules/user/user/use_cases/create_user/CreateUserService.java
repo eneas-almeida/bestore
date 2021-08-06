@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.venzel.store.modules.user.user.dtos.CreateUserDTO;
 import br.com.venzel.store.modules.user.user.dtos.UserDTO;
 import br.com.venzel.store.modules.user.user.entities.User;
+import br.com.venzel.store.modules.user.user.entities.types.UserType;
 import br.com.venzel.store.modules.user.user.exceptions.UserAlreadyExistsException;
 import br.com.venzel.store.modules.user.user.mappers.UserMapper;
 import br.com.venzel.store.modules.user.user.providers.hash_provider.HashProvider;
@@ -30,17 +31,29 @@ public class CreateUserService {
     @Transactional
     public UserDTO execute(CreateUserDTO dto) {
 
-        /* Verify user existence */
+        /* Verify user existence with email */
 
-        Boolean userAlreadyExistsWithEmail = userRepository.existsByEmail(dto.getEmail());
+        Boolean existsUser = userRepository.existsByEmail(dto.getEmail());
 
-        if (userAlreadyExistsWithEmail) {
+        if (existsUser) {
             throw new UserAlreadyExistsException(UserMessageUtils.USER_ALREADY_EXISTS);
         }
 
         /* Parse dto to entity */
         
         User user = userMapper.toEntity(dto);
+
+        /* Set type user default */
+
+        user.setType(UserType.PHYSICAL_PERSON);
+
+        /* Set allow user default */
+
+        user.allow();
+
+        /* Set inactive user default */
+
+        user.inactive();
         
         /* Generate password hash */
         

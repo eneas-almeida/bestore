@@ -142,8 +142,8 @@ public class DataInstanceConfig implements CommandLineRunner {
         City cy_1 = new City("Bauru", st_1);
         City cy_2 = new City("Campinas", st_1);
         City cy_3 = new City("Macae", st_2);
-        City cy4 = new City("Recife", st_3);
-        City cy5 = new City("Campina Grande", st_4);
+        City cy_4 = new City("Recife", st_3);
+        City cy_5 = new City("Campina Grande", st_4);
 
         /* Address */
 
@@ -203,8 +203,8 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         st_1.getCities().addAll(Arrays.asList(cy_1, cy_2));
         st_2.getCities().addAll(Arrays.asList(cy_3));
-        st_3.getCities().addAll(Arrays.asList(cy4));
-        st_4.getCities().addAll(Arrays.asList(cy5));
+        st_3.getCities().addAll(Arrays.asList(cy_4));
+        st_4.getCities().addAll(Arrays.asList(cy_5));
 
         /* Repositories : Add all */
 
@@ -212,7 +212,7 @@ public class DataInstanceConfig implements CommandLineRunner {
         productRepository.saveAll(Arrays.asList(pt_1, pt_2, pt_3, pt_4, pt_5, pt_6, pt_7, pt_8, pt_9, pt_10));
         userRepository.saveAll(Arrays.asList(us_1, us_2, us_3));
         stateRepository.saveAll(Arrays.asList(st_1, st_2, st_3, st_4));
-        cityRepository.saveAll(Arrays.asList(cy_1, cy_2, cy_3, cy4, cy5));
+        cityRepository.saveAll(Arrays.asList(cy_1, cy_2, cy_3, cy_4, cy_5));
         addressRepository.saveAll(Arrays.asList(ad_1, ad_2, ad_3, ad_4, ad_5));
         orderRepository.saveAll(Arrays.asList(or_1, or_2, or_3));
         paymentRepository.saveAll(Arrays.asList(pg_1, pg_2, pg_3));
