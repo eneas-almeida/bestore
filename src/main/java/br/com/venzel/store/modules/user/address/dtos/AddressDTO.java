@@ -12,6 +12,8 @@ import lombok.Setter;
 @Setter
 public class AddressDTO {
 
+    /* Attributes */
+
     private Long id;
 
     private String publicPlace;
