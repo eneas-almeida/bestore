@@ -19,8 +19,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import br.com.venzel.store.modules.order.order.entities.Order;
-import br.com.venzel.store.modules.user.address.entities.Address;
 import br.com.venzel.store.modules.user.history.entities.History;
+import br.com.venzel.store.modules.user.profile.address.entities.Address;
 import br.com.venzel.store.modules.user.user.entities.types.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;

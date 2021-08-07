@@ -38,7 +38,7 @@ public abstract class Payment {
     /* Attributes */
 
     @Column(nullable = false)
-    private Integer state = 1;
+    private Integer state = PaymentState.PENDING.getCode();
 
     @Column(nullable = false, length = 30)
     private String name;
@@ -63,7 +63,7 @@ public abstract class Payment {
     public Payment(String name, PaymentState state, Order order) {
         super();
         this.name = name;
-		this.state = (state == null) ? null : state.getCode();
+		this.state = (state == null) ? PaymentState.PENDING.getCode() : state.getCode();
 		this.order = order;
     }
 
