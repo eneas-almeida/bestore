@@ -1,3 +1,5 @@
 # Store
 
-Iniciando as atividades ...
+### Diagrama
+
+<img src="./diagrama.png" />
