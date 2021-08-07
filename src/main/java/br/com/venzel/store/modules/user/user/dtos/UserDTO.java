@@ -2,16 +2,13 @@ package br.com.venzel.store.modules.user.user.dtos;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.venzel.store.modules.order.order.dtos.OrderDTO;
-import br.com.venzel.store.modules.user.profile.address.dtos.AddressSimpleDTO;
-import br.com.venzel.store.modules.user.user.entities.types.UserType;
+import br.com.venzel.store.modules.user.profile.profile.dtos.ProfileDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,8 +19,6 @@ public class UserDTO {
     /* Attributes */
 	
     private Long id;
-
-    private UserType type;
 
     private String name;
 
@@ -41,13 +36,16 @@ public class UserDTO {
 
      /* Elements collections */
 
-    private Set<String> telephones = new HashSet<>();
+    // private Set<String> telephones = new HashSet<>();
 
     /* Cardinalities */
 
     @JsonBackReference
     private List<OrderDTO> orders = new ArrayList<>();
 
+    // @JsonManagedReference
+    // private List<AddressSimpleDTO> adresses = new ArrayList<>();
+
     @JsonManagedReference
-    private List<AddressSimpleDTO> adresses = new ArrayList<>();
+    private ProfileDTO profile;
 }

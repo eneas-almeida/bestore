@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.venzel.store.modules.user.user.dtos.CreateUserDTO;
 import br.com.venzel.store.modules.user.user.dtos.UserDTO;
 import br.com.venzel.store.modules.user.user.entities.User;
-import br.com.venzel.store.modules.user.user.entities.types.UserType;
 import br.com.venzel.store.modules.user.user.exceptions.UserAlreadyExistsException;
 import br.com.venzel.store.modules.user.user.mappers.UserMapper;
 import br.com.venzel.store.modules.user.user.providers.hash_provider.HashProvider;
@@ -42,10 +41,6 @@ public class CreateUserService {
         /* Parse dto to entity */
         
         User user = userMapper.toEntity(dto);
-
-        /* Set type user default */
-
-        user.setType(UserType.PHYSICAL_PERSON);
 
         /* Set allow user default */
 

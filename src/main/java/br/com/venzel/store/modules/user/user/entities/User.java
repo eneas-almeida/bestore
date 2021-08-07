@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,7 +23,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import br.com.venzel.store.modules.order.order.entities.Order;
 import br.com.venzel.store.modules.user.history.entities.History;
 import br.com.venzel.store.modules.user.profile.address.entities.Address;
-import br.com.venzel.store.modules.user.user.entities.types.UserType;
+import br.com.venzel.store.modules.user.profile.profile.entities.Profile;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -40,11 +42,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
-
-    /* Type */
-
-    @Column(nullable = false)
-    private Integer type = UserType.LEGAL_PERSON.getCode();
     
     /* Attributes */
 
@@ -107,24 +104,6 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String password, UserType type) {
-        super();
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.type = (type == null) ? UserType.LEGAL_PERSON.getCode() : type.getCode();
-    }
-
-    /* Getters & Setters */
-
-    public UserType getType() {
-        return UserType.toEnum(type);
-    }
-
-    public void setType(UserType type) {
-        this.type = type.getCode();
-    }
-
     /* Elements collections */
 
     @ElementCollection
@@ -141,4 +120,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<History> histories = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private Profile profile;
 }

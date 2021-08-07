@@ -3,6 +3,8 @@ package br.com.venzel.store.modules.user.profile.profile.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import br.com.venzel.store.modules.user.user.entities.User;
+import br.com.venzel.store.modules.user.user.entities.types.UserType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,8 +25,12 @@ public class ProfileLegalPerson extends Profile {
 
     /* Constructors */
 
-    public ProfileLegalPerson(String socialReason, String cnpj) {
-        super();
+    public ProfileLegalPerson(User user, UserType type) {
+        super(user, type);
+    }
+
+    public ProfileLegalPerson(User user, UserType type, String socialReason, String cnpj) {
+        super(user, type);
         this.socialReason = socialReason;
         this.cnpj = cnpj;
     }

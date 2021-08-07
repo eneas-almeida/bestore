@@ -28,6 +28,9 @@ import br.com.venzel.store.modules.user.profile.address.entities.State;
 import br.com.venzel.store.modules.user.profile.address.repositories.AddressRepository;
 import br.com.venzel.store.modules.user.profile.address.repositories.CityRepository;
 import br.com.venzel.store.modules.user.profile.address.repositories.StateRepository;
+import br.com.venzel.store.modules.user.profile.profile.entities.Profile;
+import br.com.venzel.store.modules.user.profile.profile.entities.ProfileFhysicalPerson;
+import br.com.venzel.store.modules.user.profile.profile.repositories.ProfileRepository;
 import br.com.venzel.store.modules.user.user.entities.User;
 import br.com.venzel.store.modules.user.user.entities.types.UserType;
 import br.com.venzel.store.modules.user.user.providers.hash_provider.HashProvider;
@@ -39,13 +42,16 @@ public class DataInstanceConfig implements CommandLineRunner {
     /* Repositories injecteds */
     
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ProfileRepository profileRepository;
+
+    @Autowired
     private CategoryRepository categoryRepository;
 
     @Autowired
     private ProductRepository productRepository;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @Qualifier("mockHashProvider")
     @Autowired
@@ -107,9 +113,14 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* User */
 
-        User us_1 = new User("Tiago Rizzo", "tiago@gmail.com", hashProvider.generateHash("tiago"), UserType.LEGAL_PERSON);
-        User us_2 = new User("Alex Moura", "alex@gmail.com", hashProvider.generateHash("alex"), UserType.PHYSICAL_PERSON);
-        User us_3 = new User("Liz Venzel", "liz@gmail.com", hashProvider.generateHash("liz"), UserType.LEGAL_PERSON);
+        User us_1 = new User("Tiago Rizzo", "tiago@gmail.com", hashProvider.generateHash("tiago"));
+        User us_2 = new User("Alex Moura", "alex@gmail.com", hashProvider.generateHash("alex"));
+        User us_3 = new User("Liz Venzel", "liz@gmail.com", hashProvider.generateHash("liz"));
+
+        /* Profile */
+
+        Profile pf_1 = new ProfileFhysicalPerson(us_1, UserType.PHYSICAL_PERSON, "avatar.jpg", "0121300122");
+        us_1.setProfile(pf_1);
 
         /* Order */
 
@@ -183,9 +194,9 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* User : Add all telephones */
 
-        us_1.getTelephones().addAll(Arrays.asList("3332020", "89122311", "32001222"));
-        us_2.getTelephones().addAll(Arrays.asList("3012123", "44122314", "72315522"));
-        us_3.getTelephones().addAll(Arrays.asList("6323442", "32454423", "43334768"));
+        // us_1.getTelephones().addAll(Arrays.asList("3332020", "89122311", "32001222"));
+        // us_2.getTelephones().addAll(Arrays.asList("3012123", "44122314", "72315522"));
+        // us_3.getTelephones().addAll(Arrays.asList("6323442", "32454423", "43334768"));
 
         /* Category : Add all products */
 
@@ -208,9 +219,10 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* Repositories : Add all */
 
+        userRepository.saveAll(Arrays.asList(us_1, us_2, us_3));
+        profileRepository.saveAll(Arrays.asList(pf_1));
         categoryRepository.saveAll(Arrays.asList(ct_1, ct_2, ct_3, ct_4, ct_5, ct_6, ct_7, ct_8, ct_9, ct_10, ct_11, ct_12));
         productRepository.saveAll(Arrays.asList(pt_1, pt_2, pt_3, pt_4, pt_5, pt_6, pt_7, pt_8, pt_9, pt_10));
-        userRepository.saveAll(Arrays.asList(us_1, us_2, us_3));
         stateRepository.saveAll(Arrays.asList(st_1, st_2, st_3, st_4));
         cityRepository.saveAll(Arrays.asList(cy_1, cy_2, cy_3, cy_4, cy_5));
         addressRepository.saveAll(Arrays.asList(ad_1, ad_2, ad_3, ad_4, ad_5));

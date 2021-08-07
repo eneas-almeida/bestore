@@ -5,10 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProfileDTO {
+public class CreateProfileFhysicalPersonDTO {
     
-    /* Attributes */
+    private String avatar;
 
-    private Long id;
-
+    private String cpf;
 }
