@@ -20,19 +20,14 @@ import br.com.venzel.store.modules.product.category.entities.Category;
 import br.com.venzel.store.modules.product.category.repositories.CategoryRepository;
 import br.com.venzel.store.modules.product.product.entities.Product;
 import br.com.venzel.store.modules.product.product.repositories.ProductRepository;
+import br.com.venzel.store.modules.profile.address.entities.Address;
+import br.com.venzel.store.modules.profile.address.repositories.AddressRepository;
+import br.com.venzel.store.modules.profile.profile.entities.Profile;
+import br.com.venzel.store.modules.profile.profile.entities.types.ProfileType;
+import br.com.venzel.store.modules.profile.profile.repositories.ProfileRepository;
 import br.com.venzel.store.modules.user.history.entities.History;
 import br.com.venzel.store.modules.user.history.repositories.HistoryRepository;
-import br.com.venzel.store.modules.user.profile.address.entities.Address;
-import br.com.venzel.store.modules.user.profile.address.entities.City;
-import br.com.venzel.store.modules.user.profile.address.entities.State;
-import br.com.venzel.store.modules.user.profile.address.repositories.AddressRepository;
-import br.com.venzel.store.modules.user.profile.address.repositories.CityRepository;
-import br.com.venzel.store.modules.user.profile.address.repositories.StateRepository;
-import br.com.venzel.store.modules.user.profile.profile.entities.Profile;
-import br.com.venzel.store.modules.user.profile.profile.entities.ProfileFhysicalPerson;
-import br.com.venzel.store.modules.user.profile.profile.repositories.ProfileRepository;
 import br.com.venzel.store.modules.user.user.entities.User;
-import br.com.venzel.store.modules.user.user.entities.types.UserType;
 import br.com.venzel.store.modules.user.user.providers.hash_provider.HashProvider;
 import br.com.venzel.store.modules.user.user.repositories.UserRepository;
 
@@ -66,12 +61,6 @@ public class DataInstanceConfig implements CommandLineRunner {
     @Autowired
     private OrderItemRepository orderItemRepository;
     
-    @Autowired
-    private StateRepository stateRepository;
-    
-    @Autowired
-    private CityRepository cityRepository;
-
     @Autowired
     private AddressRepository addressRepository;
 
@@ -119,8 +108,14 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* Profile */
 
-        Profile pf_1 = new ProfileFhysicalPerson(us_1, UserType.PHYSICAL_PERSON, "avatar.jpg", "0121300122");
+        Profile pf_1 = new Profile(us_1, ProfileType.PHYSICAL_PERSON);
         us_1.setProfile(pf_1);
+
+        Profile pf_2 = new Profile(us_2, ProfileType.PHYSICAL_PERSON);
+        us_2.setProfile(pf_2);
+
+        Profile pf_3 = new Profile(us_3, ProfileType.PHYSICAL_PERSON);
+        us_3.setProfile(pf_2);
 
         /* Order */
 
@@ -141,28 +136,13 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         us_1.getOrders().addAll(Arrays.asList(or_1, or_2));
 
-        /* State */
-
-        State st_1 = new State("SP");
-        State st_2 = new State("RJ");
-        State st_3 = new State("PE");
-        State st_4 = new State("PB");
-
-        /* City */
-
-        City cy_1 = new City("Bauru", st_1);
-        City cy_2 = new City("Campinas", st_1);
-        City cy_3 = new City("Macae", st_2);
-        City cy_4 = new City("Recife", st_3);
-        City cy_5 = new City("Campina Grande", st_4);
-
         /* Address */
 
-        Address ad_1 = new Address("Rua 13 de maio", "213", null, "Bodcongo", "58429077", "Campina Grande", "PB", us_1);
-        Address ad_2 = new Address("Rua Pedro II", "34", null, "Isabel", "58429077", "Campina Grande", "PB", us_2);
-        Address ad_3 = new Address("Rua Afonso Campos", "90", null, "Nacoes", "58429077", "Macae", "RJ", us_3);
-        Address ad_4 = new Address("Avenida Santa Cruz", "102", null, "Mangabeira", "58429077", "Recife", "PE", us_1);
-        Address ad_5 = new Address("Avenida Santa Cruz", "102", null, "Jose Pinheiro", "58429077", "Macae", "RJ", us_2);
+        Address ad_1 = new Address("Rua 13 de maio", "213", null, "Bodcongo", "58429077", "Campina Grande", "PB", pf_1);
+        Address ad_2 = new Address("Rua Pedro II", "34", null, "Isabel", "58429077", "Campina Grande", "PB", pf_2);
+        Address ad_3 = new Address("Rua Afonso Campos", "90", null, "Nacoes", "58429077", "Macae", "RJ", pf_3);
+        Address ad_4 = new Address("Avenida Santa Cruz", "102", null, "Mangabeira", "58429077", "Recife", "PE", pf_1);
+        Address ad_5 = new Address("Avenida Santa Cruz", "102", null, "Jose Pinheiro", "58429077", "Macae", "RJ", pf_2);
 
         /* OrdeItem */
 
@@ -187,16 +167,10 @@ public class DataInstanceConfig implements CommandLineRunner {
 
         /* User : Add all address */
 
-        us_1.getAdresses().addAll(Arrays.asList(ad_1, ad_2));
-        us_2.getAdresses().addAll(Arrays.asList(ad_3));
-        us_3.getAdresses().addAll(Arrays.asList(ad_4));
-        us_3.getAdresses().addAll(Arrays.asList(ad_5));
-
-        /* User : Add all telephones */
-
-        // us_1.getTelephones().addAll(Arrays.asList("3332020", "89122311", "32001222"));
-        // us_2.getTelephones().addAll(Arrays.asList("3012123", "44122314", "72315522"));
-        // us_3.getTelephones().addAll(Arrays.asList("6323442", "32454423", "43334768"));
+        pf_1.getAdresses().addAll(Arrays.asList(ad_1, ad_2));
+        pf_2.getAdresses().addAll(Arrays.asList(ad_3));
+        pf_3.getAdresses().addAll(Arrays.asList(ad_4));
+        pf_3.getAdresses().addAll(Arrays.asList(ad_5));
 
         /* Category : Add all products */
 
@@ -204,28 +178,19 @@ public class DataInstanceConfig implements CommandLineRunner {
         ct_2.getProducts().addAll(Arrays.asList(pt_2));
         ct_12.getProducts().addAll(Arrays.asList(pt_7, pt_8, pt_9, pt_10));
 
-        /* */
+        /* Product : Add all categories */
 
         pt_1.getCategories().addAll(Arrays.asList(ct_1));
         pt_2.getCategories().addAll(Arrays.asList(ct_1, ct_2));
         pt_3.getCategories().addAll(Arrays.asList(ct_1));
 
-        /* Product : Add all categories */
-
-        st_1.getCities().addAll(Arrays.asList(cy_1, cy_2));
-        st_2.getCities().addAll(Arrays.asList(cy_3));
-        st_3.getCities().addAll(Arrays.asList(cy_4));
-        st_4.getCities().addAll(Arrays.asList(cy_5));
-
         /* Repositories : Add all */
 
         userRepository.saveAll(Arrays.asList(us_1, us_2, us_3));
-        profileRepository.saveAll(Arrays.asList(pf_1));
+        profileRepository.saveAll(Arrays.asList(pf_1, pf_2, pf_3));
+        addressRepository.saveAll(Arrays.asList(ad_1, ad_2, ad_3));
         categoryRepository.saveAll(Arrays.asList(ct_1, ct_2, ct_3, ct_4, ct_5, ct_6, ct_7, ct_8, ct_9, ct_10, ct_11, ct_12));
         productRepository.saveAll(Arrays.asList(pt_1, pt_2, pt_3, pt_4, pt_5, pt_6, pt_7, pt_8, pt_9, pt_10));
-        stateRepository.saveAll(Arrays.asList(st_1, st_2, st_3, st_4));
-        cityRepository.saveAll(Arrays.asList(cy_1, cy_2, cy_3, cy_4, cy_5));
-        addressRepository.saveAll(Arrays.asList(ad_1, ad_2, ad_3, ad_4, ad_5));
         orderRepository.saveAll(Arrays.asList(or_1, or_2, or_3));
         paymentRepository.saveAll(Arrays.asList(pg_1, pg_2, pg_3));
         orderItemRepository.saveAll(Arrays.asList(oi_1, oi_2, oi_3));

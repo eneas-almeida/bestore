@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class CreateHistoryDTO {
     
-    private String description;
+    private String action;
 
     private User user;
 }

@@ -4,7 +4,7 @@ import java.time.OffsetDateTime;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import br.com.venzel.store.modules.user.user.dtos.UserSimpleDTO;
+import br.com.venzel.store.modules.user.user.dtos.SimpleUserDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,9 +12,7 @@ import lombok.Setter;
 @Setter
 public class HistoryDTO {
 
-    /* Attributes */
-    
-    private String description;
+    private String action;
 
     /* Timestamps */
 
@@ -23,5 +21,5 @@ public class HistoryDTO {
     /* Cardinalities */
     
     @JsonManagedReference
-    private UserSimpleDTO user;
+    private SimpleUserDTO user;
 }

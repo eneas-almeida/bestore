@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.venzel.store.modules.order.order.dtos.OrderDTO;
-import br.com.venzel.store.modules.user.profile.profile.dtos.ProfileDTO;
+import br.com.venzel.store.modules.profile.profile.dtos.ProfileDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +16,6 @@ import lombok.Setter;
 @Setter
 public class UserDTO {
 
-    /* Attributes */
-	
     private Long id;
 
     private String name;
@@ -34,17 +32,10 @@ public class UserDTO {
 
     private OffsetDateTime updatedAt;
 
-     /* Elements collections */
-
-    // private Set<String> telephones = new HashSet<>();
-
     /* Cardinalities */
 
     @JsonBackReference
     private List<OrderDTO> orders = new ArrayList<>();
-
-    // @JsonManagedReference
-    // private List<AddressSimpleDTO> adresses = new ArrayList<>();
 
     @JsonManagedReference
     private ProfileDTO profile;

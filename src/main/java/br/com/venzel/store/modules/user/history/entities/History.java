@@ -35,7 +35,7 @@ public class History {
     /* Attributes */
     
     @Column(nullable = false, length = 100)
-    private String description;
+    private String action;
 
     /* Timestamps */
 
@@ -45,9 +45,9 @@ public class History {
 
     /* Constructors */
 
-    public History(String description, User user) {
+    public History(String action, User user) {
         super();
-        this.description = description;
+        this.action = action;
         this.user = user;
     }
 

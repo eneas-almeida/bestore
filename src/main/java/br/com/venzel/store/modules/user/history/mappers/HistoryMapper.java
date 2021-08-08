@@ -28,8 +28,8 @@ public class HistoryMapper {
                     .collect(Collectors.toList());
     }
 
-    public Page<HistoryDTO> toCollectionPageModel(Page<History> histories) {
-        return histories.map(e -> toDTO(e));
+    public Page<HistoryDTO> toCollectionPageModel(Page<History> Histories) {
+        return Histories.map(e -> toDTO(e));
     }
 
     public History toEntity(CreateHistoryDTO dto) {
