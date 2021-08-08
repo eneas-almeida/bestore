@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.venzel.store.modules.user.user.dtos.UserDTO;
 import br.com.venzel.store.modules.user.user.entities.User;
+import br.com.venzel.store.modules.user.user.entities.types.UserState;
 import br.com.venzel.store.modules.user.user.exceptions.UserNotFoundException;
 import br.com.venzel.store.modules.user.user.mappers.UserMapper;
 import br.com.venzel.store.modules.user.user.repositories.UserRepository;
@@ -39,9 +40,7 @@ public class DeleteUserService {
 
         user.setDeletedAt(OffsetDateTime.now(Clock.systemUTC()));
 
-        user.inactive();
-
-        user.disallow();
+        user.setState(UserState.DELETED);
 
         /* End update data */
 

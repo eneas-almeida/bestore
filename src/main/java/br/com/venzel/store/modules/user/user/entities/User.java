@@ -19,6 +19,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import br.com.venzel.store.modules.order.order.entities.Order;
 import br.com.venzel.store.modules.profile.profile.entities.Profile;
 import br.com.venzel.store.modules.user.history.entities.History;
+import br.com.venzel.store.modules.user.user.entities.types.UserState;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -37,6 +38,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
+
+    /* Types */
+
+    @Column(nullable = false)
+    private Integer state = UserState.NEW.getCode();
     
     /* Attributes */
 
@@ -48,32 +54,6 @@ public class User {
 
     @Column(nullable = false, length = 50)
     private String password;
-
-    /* Activated attribute */
-
-    @Column(nullable = false)
-    private Boolean activated = Boolean.FALSE;
-
-    public void active() {
-        setActivated(true);
-    }
-
-    public void inactive() {
-        setActivated(false);
-    }
-
-    /* Allowed attribute */
-
-    @Column(nullable = false)
-    private Boolean allowed = Boolean.TRUE;
-
-    public void allow() {
-        setAllowed(true);
-    }
-
-    public void disallow() {
-        setAllowed(false);
-    }
 
     /* Timestamps */
 
@@ -97,6 +77,24 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public User(String name, String email, String password, UserState state) {
+        super();
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.state = (state == null) ? UserState.NEW.getCode() : state.getCode();
+    }
+
+    /* Getters & Setters */
+
+    public UserState getState() {
+        return UserState.toEnum(state);
+    }
+
+    public void setState(UserState state) {
+        this.state = state.getCode();
     }
 
     /* Cardinalities */

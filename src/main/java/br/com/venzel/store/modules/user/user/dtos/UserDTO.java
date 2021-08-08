@@ -8,7 +8,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.venzel.store.modules.order.order.dtos.OrderDTO;
-import br.com.venzel.store.modules.profile.profile.dtos.ProfileDTO;
+import br.com.venzel.store.modules.profile.profile.dtos.SimpleProfileDTO;
+import br.com.venzel.store.modules.user.user.entities.types.UserState;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,13 +19,15 @@ public class UserDTO {
 
     private Long id;
 
+    /* Types */
+
+    private UserState state;
+
+    /* Others */
+
     private String name;
 
     private String email;
-
-    private Boolean activated;
-
-    private Boolean allowed;
 
     /* Timestamps */
 
@@ -38,5 +41,5 @@ public class UserDTO {
     private List<OrderDTO> orders = new ArrayList<>();
 
     @JsonManagedReference
-    private ProfileDTO profile;
+    private SimpleProfileDTO profile;
 }

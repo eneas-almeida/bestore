@@ -14,8 +14,8 @@ import lombok.Setter;
 public class SimpleUserDTO {
 
     private String name;
-
-    private String avatar;
+    
+    private String email;
 
     /* Cardinalities */
     
