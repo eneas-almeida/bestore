@@ -16,9 +16,9 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import br.com.venzel.store.modules.activity.activity.entities.Activity;
 import br.com.venzel.store.modules.order.order.entities.Order;
 import br.com.venzel.store.modules.profile.profile.entities.Profile;
-import br.com.venzel.store.modules.user.history.entities.History;
 import br.com.venzel.store.modules.user.user.entities.types.UserState;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -106,5 +106,5 @@ public class User {
     private List<Order> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<History> histories = new ArrayList<>();
+    private List<Activity> activities = new ArrayList<>();
 }

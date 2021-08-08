@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.venzel.store.modules.activity.activity.use_cases.create_cctivity.CreateActivityService;
 import br.com.venzel.store.modules.user.user.dtos.CreateUserDTO;
 import br.com.venzel.store.modules.user.user.dtos.UserDTO;
 import br.com.venzel.store.modules.user.user.entities.User;
@@ -23,6 +24,9 @@ public class CreateUserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private CreateActivityService createActivityService;
 
     @Qualifier("mockHashProvider")
     @Autowired
@@ -54,6 +58,10 @@ public class CreateUserService {
         /* Save user in repository */
         
         userRepository.save(user);
+
+        /* Create activity */
+
+        createActivityService.execute(UserMessageUtils.USER_REGISTRED, user);
 
         /* Parse entity to dto and return */
 

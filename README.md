@@ -6,8 +6,10 @@
 
 <img src="./diagrama.png" />
 
-<br />
-
 ### Version 2
 
 <img src="./diagrama-v2.png" />
+
+### Version 3
+
+<img src="./diagrama-v3.png" />

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.venzel.store.modules.activity.activity.use_cases.create_cctivity.CreateActivityService;
 import br.com.venzel.store.modules.product.category.dtos.CreateProductDTO;
 import br.com.venzel.store.modules.product.category.repositories.CategoryRepository;
 import br.com.venzel.store.modules.product.product.dtos.ProductDTO;
@@ -15,7 +16,7 @@ import br.com.venzel.store.modules.product.product.exceptions.ProductAlreadyExis
 import br.com.venzel.store.modules.product.product.mappers.ProductMapper;
 import br.com.venzel.store.modules.product.product.repositories.ProductRepository;
 import br.com.venzel.store.modules.product.product.utils.ProductMessageUtils;
-import br.com.venzel.store.modules.user.history.use_cases.create_history.CreateHistoryService;
+import br.com.venzel.store.modules.user.user.entities.User;
 
 @Service
 public class CreateProductService {
@@ -30,7 +31,7 @@ public class CreateProductService {
     private ProductMapper productMapper;
 
     @Autowired
-    private CreateHistoryService createHistoryService;
+    private CreateActivityService createActivityService;
 
     @Transactional
     public ProductDTO execute(CreateProductDTO dto) {
@@ -55,9 +56,9 @@ public class CreateProductService {
 
         productRepository.save(product);
 
-        /* Create history */
+        /* Create activity */
 
-        createHistoryService.execute(ProductMessageUtils.PRODUCT_CREATED, 1L);
+        createActivityService.execute(ProductMessageUtils.PRODUCT_CREATED, new User());
 
         /* Entity to dto and return */
 

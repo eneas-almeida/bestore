@@ -1,4 +1,4 @@
-package br.com.venzel.store.modules.user.history.entities;
+package br.com.venzel.store.modules.activity.activity.entities;
 
 import java.time.OffsetDateTime;
 
@@ -22,8 +22,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "history")
-public class History {
+@Entity(name = "activity")
+public class Activity {
 
     /* Id & strategy to generate */
 
@@ -45,7 +45,7 @@ public class History {
 
     /* Constructors */
 
-    public History(String action, User user) {
+    public Activity(String action, User user) {
         super();
         this.action = action;
         this.user = user;

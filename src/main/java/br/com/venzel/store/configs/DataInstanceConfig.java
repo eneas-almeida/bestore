@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import br.com.venzel.store.modules.activity.activity.entities.Activity;
+import br.com.venzel.store.modules.activity.activity.repositories.ActivityRepository;
 import br.com.venzel.store.modules.order.order.entities.Order;
 import br.com.venzel.store.modules.order.order.repositories.OrderRepository;
 import br.com.venzel.store.modules.order.order_item.entities.OrderItem;
@@ -25,8 +27,6 @@ import br.com.venzel.store.modules.profile.address.repositories.AddressRepositor
 import br.com.venzel.store.modules.profile.profile.entities.Profile;
 import br.com.venzel.store.modules.profile.profile.entities.types.ProfileType;
 import br.com.venzel.store.modules.profile.profile.repositories.ProfileRepository;
-import br.com.venzel.store.modules.user.history.entities.History;
-import br.com.venzel.store.modules.user.history.repositories.HistoryRepository;
 import br.com.venzel.store.modules.user.user.entities.User;
 import br.com.venzel.store.modules.user.user.providers.hash_provider.HashProvider;
 import br.com.venzel.store.modules.user.user.repositories.UserRepository;
@@ -65,7 +65,7 @@ public class DataInstanceConfig implements CommandLineRunner {
     private AddressRepository addressRepository;
 
     @Autowired
-    private HistoryRepository historyRepository;
+    private ActivityRepository activityRepository;
 
     /* Auto execute method */
 
@@ -150,11 +150,11 @@ public class DataInstanceConfig implements CommandLineRunner {
         OrderItem oi_2 = new OrderItem(or_1, pt_3, 0.00, 2, 7.45);
         OrderItem oi_3 = new OrderItem(or_2, pt_2, 10.00, 4, 4.28);
 
-        /* History */
+        /* Activity */
 
-        History hy_1 = new History("Product created", us_1);
-        History hy_2 = new History("User deleted", us_1);
-        History hy_3 = new History("User deleted", us_2);
+        Activity hy_1 = new Activity("Product created, id 1892.", us_1);
+        Activity hy_2 = new Activity("User deleted id 012.", us_1);
+        Activity hy_3 = new Activity("User deleted id 103", us_2);
 
         /* */
 
@@ -194,6 +194,6 @@ public class DataInstanceConfig implements CommandLineRunner {
         orderRepository.saveAll(Arrays.asList(or_1, or_2, or_3));
         paymentRepository.saveAll(Arrays.asList(pg_1, pg_2, pg_3));
         orderItemRepository.saveAll(Arrays.asList(oi_1, oi_2, oi_3));
-        historyRepository.saveAll(Arrays.asList(hy_1, hy_2, hy_3));
+        activityRepository.saveAll(Arrays.asList(hy_1, hy_2, hy_3));
     }
 }

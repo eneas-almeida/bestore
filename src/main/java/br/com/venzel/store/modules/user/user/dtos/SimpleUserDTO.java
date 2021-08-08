@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import br.com.venzel.store.modules.user.history.dtos.HistoryDTO;
+import br.com.venzel.store.modules.activity.activity.dtos.ActivityDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +20,5 @@ public class SimpleUserDTO {
     /* Cardinalities */
     
     @JsonBackReference
-    private List<HistoryDTO> histories = new ArrayList<>();
+    private List<ActivityDTO> activities = new ArrayList<>();
 }

@@ -1,4 +1,4 @@
-package br.com.venzel.store.modules.user.history.dtos;
+package br.com.venzel.store.modules.activity.activity.dtos;
 
 import java.time.OffsetDateTime;
 
@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class HistoryDTO {
+public class ActivityDTO {
 
     private String action;
 
