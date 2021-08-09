@@ -1,8 +1,8 @@
-# Store
+# BeStore
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/store/blob/master/LICENSE)
 
-> **Store** é uma aplicação back end para venda de produtos.
+> **BeStore** é uma aplicação back end para venda de produtos em geral.
 
 ## Tecnologias utilizadas
 
@@ -13,15 +13,24 @@
 -   Java
 -   Spring Boot
 -   JPA / Hibernate
+
+### Persistência de dados
+
 -   MySQL
--   Maven
--   Makefile
+
+### Outras informações
+
+O projeto tem como gerencimento de pacotes o **Maven** e o **Makefile** como automação de comandos, além disso, o mysql é gerenciado através de um container do **Docker**.
+
+#### Bibliotecas externas utilizadas
+
+-   <a href="http://modelmapper.org/">Model Mapper</a>
 
 ## Arquitetura
 
 ### Porque Feature by Package?
 
-Feature by Package (FBP) é uma arquitetura que utiliza conceitos do DDD (Domain Driven Design), sugerida por empresas como a **Rocketseat**, onde, a estrutura apesar de ser um monolítico, é possível desenvolver um código mais **flexível**, **escalável** e de **manutenção simples**.
+Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Domain Driven Design)**, sugerida por empresas como a **Rocketseat**, onde, a estrutura apesar de ser um monolítico, é possível desenvolver um código mais **flexível**, **escalável** e de **manutenção simples**.
 
 ### Vantagens da arquitetura
 
@@ -63,7 +72,7 @@ cd store
 # Para subir o container do mysql na porta 3306
 make up
 
-# Para executar o projeto
+# Para executar o projeto na porta 8080
 make run
 ```
 
