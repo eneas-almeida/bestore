@@ -2,11 +2,13 @@
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/store/blob/master/LICENSE)
 
-> **BeStore** é uma aplicação back end para venda de produtos em geral.
+> **BeStore** é uma aplicação para venda de produtos em geral.<br /> <a href="http://bestore.me">👉 bestore.me</a>
 
-## Tecnologias utilizadas
+<p align="center"><img src="./media/logos/bestore-v3.png" width="280" /></p>
 
-**Java** e **Spring Boot** com uma arquitetura **Feature by Package** (módulos e casos de usos), foram as tecnologias adotadas na aplicação.
+## Tecnologias
+
+API Rest em **Java** e **Spring Boot** com uma arquitetura **Feature by Package** (módulos e casos de usos).
 
 ### Back end
 
@@ -30,7 +32,7 @@ O projeto tem como gerencimento de pacotes o **Maven** e o **Makefile** como aut
 
 ### Porque Feature by Package?
 
-Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Domain Driven Design)**, sugerida por empresas como a **Rocketseat**, onde, a estrutura apesar de ser um monolítico, é possível desenvolver um código mais **flexível**, **escalável** e de **manutenção simples**.
+Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Domain Driven Design)**, sugerida por empresas como a **Rocketseat**, com o objetivo de tornar o código mais **flexível**, **escalável** e de **manutenção simples**.
 
 ### Vantagens da arquitetura
 
@@ -42,13 +44,13 @@ Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Doma
 
 ### Organização das pastas
 
-<p align="center"><img src="./store-tree-v2.png" width="300" /></p>
+<p align="center"><img src="./media/store-tree-v2.png" width="300" /></p>
 
 ## Diagrama
 
 ### Versão 3
 
-<img src="./diagrama-v3.png" />
+<img src="./media/diagramas/diagrama-v3.png" />
 
 ### Influências
 
@@ -64,10 +66,10 @@ Este projeto tem como principais influências, os fundamentos da <a href="https:
 
 ```bash
 # Para clonar repositório
-git clone https://github.com/venzel/store
+git clone https://github.com/venzel/bestore
 
 # Para entrar na pasta do projeto
-cd store
+cd bestore
 
 # Para subir o container do mysql na porta 3306
 make up
