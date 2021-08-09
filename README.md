@@ -6,7 +6,7 @@
 
 ## Tecnologias utilizadas
 
-**Java** e **Spring Boot** com uma arquitetura Feature by Package (módulos e casos de usos), foram as tecnologias adotadas na aplicação.
+**Java** e **Spring Boot** com uma arquitetura **Feature by Package** (módulos e casos de usos), foram as tecnologias adotadas na aplicação.
 
 ### Back end
 
@@ -21,7 +21,7 @@
 
 ### Porque Feature by Package?
 
-Feature by Package é uma arquitetura sugerida por empresas como a **Rocketseat**, onde, a estrutura apesar de ser um monolítico, é possível desenvolver um código de forma mais **flexível**, **escalável** e de **manutenção simples**.
+Feature by Package (FBP) é uma arquitetura que utiliza conceitos do DDD (Domain Driven Design), sugerida por empresas como a **Rocketseat**, onde, a estrutura apesar de ser um monolítico, é possível desenvolver um código mais **flexível**, **escalável** e de **manutenção simples**.
 
 ### Vantagens da arquitetura
 
@@ -71,4 +71,4 @@ make run
 
 Enéas Almeida
 
-https://www.linkedin.com/in/venzel
+<a href="https://www.linkedin.com/in/venzel">https://www.linkedin.com/in/venzel</a>
