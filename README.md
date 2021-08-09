@@ -21,7 +21,7 @@
 
 ### Porque Feature by Package?
 
-Feature by Package é uma arquitetura sugerida por empresas como a **Rocketseat**, onde, a estrutura apesar de ser um monolítico, é possível desenvolver um código de forma mais flexível, escalável e de manutenção simples.
+Feature by Package é uma arquitetura sugerida por empresas como a **Rocketseat**, onde, a estrutura apesar de ser um monolítico, é possível desenvolver um código de forma mais **flexível**, **escalável** e de **manutenção simples**.
 
 ### Vantagens da arquitetura
 
@@ -41,6 +41,10 @@ Feature by Package é uma arquitetura sugerida por empresas como a **Rocketseat*
 
 <img src="./diagrama-v3.png" />
 
+### Influências
+
+Este projeto tem como principais influências, os fundamentos da <a href="https://rocketseat.com.br">Rocketseat</a>, <a href="https://devsuperior.com.br">DevSuperior<a> e <a href="https://www.algaworks.com">AlgaWorks<a>.
+
 ## Como executar o projeto
 
 ### Pré-requisitos
@@ -50,7 +54,7 @@ Feature by Package é uma arquitetura sugerida por empresas como a **Rocketseat*
 -   Docker compose
 
 ```bash
-# clonar repositório
+# Para clonar repositório
 git clone https://github.com/venzel/store
 
 # Para entrar na pasta do projeto
@@ -63,7 +67,7 @@ make up
 make run
 ```
 
-# Autor
+## Autor
 
 Enéas Almeida
 
