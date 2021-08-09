@@ -2,11 +2,11 @@
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/store/blob/master/LICENSE)
 
-> <b>Store</b> é uma aplicação back end para venda de produtos.
+> **Store** é uma aplicação back end para venda de produtos.
 
 ## Tecnologias utilizadas
 
-Java e Spring Boot com uma arquitetura Feature by Package (módulos e casos de usos), foram as tecnologias adotadas na aplicação.
+**Java** e **Spring Boot** com uma arquitetura Feature by Package (módulos e casos de usos), foram as tecnologias adotadas na aplicação.
 
 ### Back end
 
@@ -19,11 +19,25 @@ Java e Spring Boot com uma arquitetura Feature by Package (módulos e casos de u
 
 ## Arquitetura
 
-<center><img src="./store-tree-v2.png" width="200" /></center>
+### Porque Feature by Package?
+
+Feature by Package é uma arquitetura sugerida por empresas como a **Rocketseat**, onde, a estrutura apesar de ser um monolítico, é possível desenvolver um código de forma mais flexível, escalável e de manutenção simples.
+
+### Vantagens da arquitetura
+
+-   **MANUTENÇÃO**: Facilita o engajamento de muitas equipe e colaboradores em um projeto;
+-   **ESCALÁVEL**: Facilita refatoramento do código monolítico para uma uma estrura de microserviços;
+-   **SOLID**: Facilita a aplicação de todos os princípios do SOLID;
+-   **GIT**: Melhora o gerenciamento dos commits, evitando conflitos e etc;
+-   **TESTES**: Facilita o desenvolvimento de testes de unidade e integração.
+
+### Organização das pastas
+
+<p align="center"><img src="./store-tree-v2.png" width="300" /></p>
 
 ## Diagrama
 
-### Version 3
+### Versão 3
 
 <img src="./diagrama-v3.png" />
 
