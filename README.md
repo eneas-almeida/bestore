@@ -1,15 +1,56 @@
 # Store
 
-### Diagrama
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/store/blob/master/LICENSE)
 
-### Version 1
+> <b>Store</b> é uma aplicação back end para venda de produtos.
 
-<img src="./diagrama.png" />
+## Tecnologias utilizadas
 
-### Version 2
+Java e Spring Boot com uma arquitetura Feature by Package (módulos e casos de usos), foram as tecnologias adotadas na aplicação.
 
-<img src="./diagrama-v2.png" />
+### Back end
+
+-   Java
+-   Spring Boot
+-   JPA / Hibernate
+-   MySQL
+-   Maven
+-   Makefile
+
+## Arquitetura
+
+<center><img src="./store-tree-v2.png" width="200" /></center>
+
+## Diagrama
 
 ### Version 3
 
 <img src="./diagrama-v3.png" />
+
+## Como executar o projeto
+
+### Pré-requisitos
+
+-   Java 11
+-   Docker
+-   Docker compose
+
+```bash
+# clonar repositório
+git clone https://github.com/venzel/store
+
+# Para entrar na pasta do projeto
+cd store
+
+# Para subir o container do mysql na porta 3306
+make up
+
+# Para executar o projeto
+make run
+```
+
+# Autor
+
+Enéas Almeida
+
+https://www.linkedin.com/in/venzel
