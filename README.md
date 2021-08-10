@@ -1,6 +1,6 @@
 # BeStore
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/store/blob/master/LICENSE)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/bestore/blob/master/LICENSE)
 
 > **BeStore** é uma aplicação para venda de produtos em geral.<br /> <a href="http://bestore.me">👉 bestore.me</a>
 
@@ -9,6 +9,12 @@
 ## Tecnologias
 
 API Rest em **Java** e **Spring Boot** com uma arquitetura **Feature by Package** (módulos e casos de usos).
+
+<p align="left">
+
+  <img src="https://cdn.worldvectorlogo.com/logos/java-14.svg" alt="Java" title="Java" width="30" height="30" /> 
+  <img src="https://cdn.worldvectorlogo.com/logos/spring-3.svg" alt="Spring" title="Spring" width="30" height="30" /> 
+</p>
 
 ### Back end
 
