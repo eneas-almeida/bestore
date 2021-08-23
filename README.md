@@ -11,7 +11,6 @@
 API Rest em **Java** e **Spring Boot** com uma arquitetura **Feature by Package** (módulos e casos de usos).
 
 <p align="left">
-
   <img src="https://cdn.worldvectorlogo.com/logos/java-14.svg" alt="Java" title="Java" width="30" height="30" /> 
   <img src="https://cdn.worldvectorlogo.com/logos/spring-3.svg" alt="Spring" title="Spring" width="30" height="30" /> 
 </p>
@@ -32,7 +31,8 @@ O projeto tem como gerencimento de pacotes o **Maven** e o **Makefile** como aut
 
 #### Bibliotecas externas utilizadas
 
--   <a href="http://modelmapper.org/">Model Mapper</a>
+-   <a href="http://modelmapper.org">Model Mapper</a>
+-   <a href="https://projectlombok.org">Lombok</a>
 
 ## Arquitetura
 
@@ -54,9 +54,9 @@ Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Doma
 
 ## Diagrama
 
-### Versão 3
+### Versão 5
 
-<img src="./media/diagramas/diagrama-v3.png" />
+<img src="./media/diagramas/diagrama-v5.png" />
 
 ### Influências
 
@@ -86,6 +86,6 @@ make run
 
 ## Autor
 
-Enéas Almeida
+Edivam Enéas de Almeida Júnior
 
-<a href="https://www.linkedin.com/in/venzel">https://www.linkedin.com/in/venzel</a>
+👉 <a href="https://www.linkedin.com/in/venzel">Linkedin</a>
