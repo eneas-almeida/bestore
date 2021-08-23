@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 @Component
 @ConfigurationProperties("email.service")
-public class EmailConfig {
+public class MailConfig {
     
-    private String name;
-    private String host;
+    private String sender;
+    private String recipient;
 }

@@ -15,6 +15,7 @@ import br.com.venzel.store.modules.user.user.mappers.UserMapper;
 import br.com.venzel.store.modules.user.user.providers.hash_provider.HashProvider;
 import br.com.venzel.store.modules.user.user.repositories.UserRepository;
 import br.com.venzel.store.modules.user.user.utils.UserMessageUtils;
+import br.com.venzel.store.shared.providers.mail_provider.MailProvider;
 
 @Service
 public class CreateUserService {
@@ -31,6 +32,9 @@ public class CreateUserService {
     @Qualifier("mockHashProvider")
     @Autowired
     private HashProvider hashProvider;
+
+    @Autowired
+    private MailProvider mailProvider;
 
     @Transactional
     public UserDTO execute(CreateUserDTO dto) {
@@ -62,6 +66,10 @@ public class CreateUserService {
         /* Create activity */
 
         createActivityService.execute(UserMessageUtils.USER_REGISTRED, user);
+
+        /* Send mail confirmation */
+
+        mailProvider.sendUserConfirmationMail(user);
 
         /* Parse entity to dto and return */
 

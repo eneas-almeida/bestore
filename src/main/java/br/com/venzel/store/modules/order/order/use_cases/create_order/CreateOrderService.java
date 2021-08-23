@@ -9,6 +9,7 @@ import br.com.venzel.store.modules.order.order.dtos.OrderDTO;
 import br.com.venzel.store.modules.order.order.entities.Order;
 import br.com.venzel.store.modules.order.order.mappers.OrderMapper;
 import br.com.venzel.store.modules.order.order.repositories.OrderRepository;
+import br.com.venzel.store.shared.providers.mail_provider.MailProvider;
 
 @Service
 public class CreateOrderService {
@@ -19,12 +20,17 @@ public class CreateOrderService {
     @Autowired
     private OrderMapper orderMapper;
 
+    @Autowired
+    private MailProvider mailProvider;
+
     @Transactional
     public OrderDTO execute(CreateOrderDTO dto) {
         
         Order order = orderMapper.toEntity(dto);
 
         orderRepository.save(order);
+
+        mailProvider.sendOrderConfirmationMail(order);
 
         return orderMapper.toDTO(order);
     }

@@ -32,7 +32,7 @@ import br.com.venzel.store.modules.user.user.providers.hash_provider.HashProvide
 import br.com.venzel.store.modules.user.user.repositories.UserRepository;
 
 @Configuration
-public class DataInstanceConfig implements CommandLineRunner {
+public class InstanceConfig implements CommandLineRunner {
 
     /* Repositories injecteds */
     

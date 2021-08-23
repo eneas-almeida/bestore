@@ -9,6 +9,16 @@
             "name": "email.service.host",
             "type": "java.lang.String",
             "description": "A description for 'email.service.host'"
+        },
+        {
+            "name": "email.service.sender",
+            "type": "java.lang.String",
+            "description": "A description for 'email.service.send'"
+        },
+        {
+            "name": "email.service.recipient",
+            "type": "java.lang.String",
+            "description": "A description for 'email.service.recipient'"
         }
     ]
 }
