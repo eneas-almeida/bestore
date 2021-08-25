@@ -12,13 +12,13 @@ Cada projeto e suas equipes podem optar por um determinado fluxo, abaixo é demo
 
 ## Branchs
 
--   **kk_lasers** - Eviará commits e pull requests apenas para branch develop. (Atividade de usuário)
--   **develop** - Receberá os pulls requests de kk_lasers. e enviará pull requests para master (Atividade do owner do GIT).
+-   **user** - Eviará commits e pull requests apenas para branch develop. (Atividade de usuário)
+-   **develop** - Receberá os pulls requests de user. e enviará pull requests para master (Atividade do owner do GIT).
 -   **master** - Receberá o pull request final de uma release. (Atividade do owner do GIT).
 
 ### Diretrizes
 
-\* A branch **master** é bloqueada pra receber commits e pull requests de kk_lasers. (recurso apenas no plano git pro), caso não possua o git pro, fica estabelecido, a proibição o envio de commits e pull requests do kk_lasers para master.
+\* A branch **master** é bloqueada pra receber commits e pull requests de user. (recurso apenas no plano git pro), caso não possua o git pro, fica estabelecido, a proibição o envio de commits e pull requests do user para master.
 
 \* A branch **master** representa o software em **produção**.
 
