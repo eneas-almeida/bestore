@@ -40,7 +40,7 @@ O projeto tem como gerencimento de pacotes o **Maven** e o **Makefile** como aut
 
 ## Gitflow
 
-<br/><p align="center"><img src="./media/images/gitflow-v1.png" width="550" /></p>
+<br/><p align="center"><img src="./media/images/gitflow-v1.png" width="650" /></p>
 
 👉 [Documentação passo a passo](./documentations/gitflow.md)
 
