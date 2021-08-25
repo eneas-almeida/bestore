@@ -34,7 +34,7 @@ O projeto tem como gerencimento de pacotes o **Maven** e o **Makefile** como aut
 -   <a href="http://modelmapper.org">Model Mapper</a>
 -   <a href="https://projectlombok.org">Lombok</a>
 
-## Quadro Kaban de atividades
+## Quadro Kanban de atividades
 
 👉 <a href="https://github.com/venzel/bestore/projects/1">Quadro Kanban<a>
 
