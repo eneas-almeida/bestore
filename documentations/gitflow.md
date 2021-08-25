@@ -31,7 +31,7 @@ Cada projeto e suas equipes podem optar por um determinado fluxo, abaixo é demo
 1 - Clona o repositório
 
 ```bash
-$ git clone https://github.com/Moabebarbosaa/ProjetoEvasao_GCPM.git
+$ git clone https://github.com/venzel/bestore.git
 ```
 
 2 - Criar uma branch com seu nome a partir da branch develop

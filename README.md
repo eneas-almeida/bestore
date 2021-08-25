@@ -42,7 +42,7 @@ O projeto tem como gerencimento de pacotes o **Maven** e o **Makefile** como aut
 
 <img src="./media/images/gitflow.png" />
 
-👉 [Documentação passo a passo](./documentacao/gitflow.md)
+👉 [Documentação passo a passo](./documentations/gitflow.md)
 
 ## Arquitetura
 
@@ -66,7 +66,7 @@ Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Doma
 
 ### Versão 5
 
-<img src="./media/diagramas/diagrama-v5.png" />
+<img src="./media/diagrams/diagrama-v5.png" />
 
 ### Influências
 
