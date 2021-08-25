@@ -6,6 +6,10 @@
 
 <p align="center"><img src="./media/logos/bestore-v3.png" width="280" /></p>
 
+## Projeto (Kanban)
+
+👉 <a href="https://github.com/venzel/bestore/projects/1">Link para o Quadro Kanban<a>
+
 ## Tecnologias
 
 API Rest em **Java** e **Spring Boot** com uma arquitetura **Feature by Package** (módulos e casos de usos).
