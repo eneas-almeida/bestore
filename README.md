@@ -34,15 +34,21 @@ O projeto tem como gerencimento de pacotes o **Maven** e o **Makefile** como aut
 -   <a href="http://modelmapper.org">Model Mapper</a>
 -   <a href="https://projectlombok.org">Lombok</a>
 
+<br/>
+
 ## Quadro Kanban de atividades
 
 👉 <a href="https://github.com/venzel/bestore/projects/1">Quadro Kanban</a>
 
+<br/>
+
 ## Gitflow
 
-<img src="./media/images/gitflow-v1.png" />
+<br/><p align="center"><img src="./media/images/gitflow-v1.png" width="400" /></p>
 
 👉 [Documentação passo a passo](./documentations/gitflow.md)
+
+<br/>
 
 ## Arquitetura
 
@@ -58,6 +64,8 @@ Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Doma
 -   **GIT**: Melhora o gerenciamento dos commits, evitando conflitos e etc;
 -   **TESTES**: Facilita o desenvolvimento de testes de unidade e integração.
 
+<br/>
+
 ### Organização das pastas
 
 <p align="center"><img src="./media/store-tree-v2.png" width="300" /></p>
@@ -68,9 +76,13 @@ Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Doma
 
 <img src="./media/diagrams/diagrama-v5.png" />
 
+<br/>
+
 ### Influências
 
 Este projeto tem como principais influências, os fundamentos da <a href="https://rocketseat.com.br">Rocketseat</a>, <a href="https://devsuperior.com.br">DevSuperior<a> e <a href="https://www.algaworks.com">AlgaWorks<a>.
+
+<br/>
 
 ## Como executar o projeto
 
