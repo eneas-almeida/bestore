@@ -8,7 +8,7 @@
 
 ## Projeto (Kanban)
 
-👉 <a href="https://github.com/venzel/bestore/projects/1">Link para o Quadro Kanban<a>
+👉 <a href="https://github.com/venzel/bestore/projects/1">Quadro Kanban<a>
 
 ## Tecnologias
 
