@@ -6,10 +6,6 @@
 
 <p align="center"><img src="./media/logos/bestore-v3.png" width="280" /></p>
 
-## Projeto (Kanban)
-
-👉 <a href="https://github.com/venzel/bestore/projects/1">Quadro Kanban<a>
-
 ## Tecnologias
 
 API Rest em **Java** e **Spring Boot** com uma arquitetura **Feature by Package** (módulos e casos de usos).
@@ -37,6 +33,16 @@ O projeto tem como gerencimento de pacotes o **Maven** e o **Makefile** como aut
 
 -   <a href="http://modelmapper.org">Model Mapper</a>
 -   <a href="https://projectlombok.org">Lombok</a>
+
+## Quadro Kaban de atividades
+
+👉 <a href="https://github.com/venzel/bestore/projects/1">Quadro Kanban<a>
+
+## Gitflow
+
+<img src="./media/images/gitflow.png" />
+
+👉 [Documentação passo a passo](./documentacao/gitflow.md)
 
 ## Arquitetura
 
