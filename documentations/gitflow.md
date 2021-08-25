@@ -8,7 +8,7 @@
 
 Cada projeto e suas equipes podem optar por um determinado fluxo, abaixo é demonstrado o método que adotamos e as responsabilidade para cada membro da equipe.
 
-<img src="../media/images/gitflow.png" />
+<img src="../media/images/gitflow-v1.png" />
 
 ## Branchs
 

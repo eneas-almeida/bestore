@@ -36,11 +36,11 @@ O projeto tem como gerencimento de pacotes o **Maven** e o **Makefile** como aut
 
 ## Quadro Kanban de atividades
 
-👉 <a href="https://github.com/venzel/bestore/projects/1">Quadro Kanban<a>
+👉 <a href="https://github.com/venzel/bestore/projects/1">Quadro Kanban</a>
 
 ## Gitflow
 
-<img src="./media/images/gitflow.png" />
+<img src="./media/images/gitflow-v1.png" />
 
 👉 [Documentação passo a passo](./documentations/gitflow.md)
 
