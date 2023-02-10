@@ -6,6 +6,12 @@
 
 <p align="center"><img src="./media/logos/bestore-v3.png" width="280" /></p>
 
+## 👤 Autores
+
+| Foto                                      | Nome                                        | Ativo | Dt. inativo | Atribuições                             |
+| ----------------------------------------- | ------------------------------------------- | ----- | ----------- | --------------------------------------- |
+| ![Enéas](./media/images/venzel-thumb.png) | [Enéas Almeida](https://github.com/venzel/) | 🔥    | -           | Manager, Arquiteto, FullStack Developer |
+
 ## Tecnologias
 
 API Rest em **Java** e **Spring Boot** com uma arquitetura **Feature by Package** (módulos e casos de usos).
